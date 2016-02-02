@@ -86,14 +86,17 @@ def boss():
 
 def person(plural):
     if not plural:
-        r = random.randint(1, 17)
-        if r <= 12:
+        r = random.randint(1, 30)
+        if r <= 20:
             return random.choice((
                 "steering committee", "group", "project manager",
                 thing_atom(random.choice((True, False))) + " champion",
                 "community", "sales manager", "enabler", "powerful champion",
                 "thought leader", "gatekeeper", "resource",
-                "senior support staff"
+                "senior support staff", "brand manager", "category manager",
+                "account executive", "project leader", "product manager",
+                "naming committee", "executive committee",
+                "white-collar workforce"
             ))
         else:
             return boss()
@@ -101,7 +104,8 @@ def person(plural):
         return random.choice((
             "key people", "human resources", "customers", "clients",
             "resources", "team players", "enablers", "stakeholders",
-            "standard-setters", "partners", "business leaders"
+            "standard-setters", "partners", "business leaders",
+            "thinkers/planners", "white-collar workers"
         ))
 
 def matrix_or_so():
