@@ -431,7 +431,7 @@ def person_verb_having_thing_complement(plural):
         "rebalance", "re-imagine", "influence", "facilitate", "drive",
         "structure", "standardize", "accelerate", "deepen", "strengthen",
         "broaden", "enforce", "establish", "foster", "build", "differentiate",
-        "take a bite out of", "table", "flesh out", "reach out"
+        "take a bite out of", "table", "flesh out", "reach out", "jump-start"
     ))
     return build_plural_verb(inner, plural)
 
