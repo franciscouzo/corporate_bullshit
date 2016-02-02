@@ -557,25 +557,36 @@ def proposition():
             growth())
 
 def articulated_propositions():
-    r = random.randint(1, 28)
-    if r <= 17:
+    r = random.randint(1, 280)
+    if r <= 170:
         return proposition()
-    elif r == 18:
+    elif r <= 180:
         return proposition() + "; this is why " + proposition()
-    elif r == 19:
+    elif r <= 190:
         return proposition() + "; nevertheless " + proposition()
-    elif r == 20:
+    elif r <= 200:
         return proposition() + ", whereas " + proposition()
-    elif r == 21:
+    elif r <= 210:
         return "our gut-feeling is that " + proposition()
-    elif r <= 25:
+    elif r <= 240:
         return proposition() + ", while " + proposition()
-    elif r == 26:
+    elif r <= 250:
         return proposition() + ". In the same time, " + proposition()
-    elif r == 27:
+    elif r <= 260:
         return proposition() + ". As a result, " + proposition()
-    else:
+    elif r <= 270:
         return proposition() + ", whilst " + proposition()
+    elif r <= 273:
+        return "our gut-feeling is that " + proposition()
+    elif r <= 276:
+        return ("the point is not merely to " +
+            person_verb_and_ending(True) +
+            ". The point is to " + person_verb_and_ending(True))
+    else:
+        p1 = random.choice((True, False))
+        p2 = random.choice((True, False))
+        return ("it's not about " + add_random_article(thing(p1), p1) +
+            ". It's about " + add_random_article(thing(p2), p2))
 
 def sentence():
     return articulated_propositions().capitalize() + "."
