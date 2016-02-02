@@ -361,7 +361,8 @@ def eventual_adverb():
             "24/7", "globally", "culturally", "technically", "strategically",
             "swiftly", "cautiously", "expediently", "organically",
             "carefully", "significantly", "conservatively","adequately",
-            "genuinely"
+            "genuinely", "efficiently", "seamlessly", "consistently",
+            "diligently"
         )) + " "
     else:
         return ""
