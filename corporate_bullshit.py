@@ -194,11 +194,12 @@ def timeless_event():
 def growth():
     superlative = random.choice((
         "organic", "double-digit", "upper single-digit", "breakout",
-        "unprecedented", "unparallelled", "proven", "measured"
+        "unprecedented", "unparallelled", "proven", "measured", "sustained",
+        "sustainable", "robust", "solid", "rock-solid", "healthy"
     ))
     improvement = random.choice((
         "growth", "improvement", "throughput increase", "efficiency gain",
-        "yield enhancement"
+        "yield enhancement", " expansion", " productivity improvement"
     ))
     return superlative + " " + improvement;
 
