@@ -55,21 +55,29 @@ def weighted_choice(choices):
 
 def boss():
     managing = weighted_choice({"Managing ": 1, "Acting ": 1, "": 6})
-    vice = weighted_choice({"Vice ": 1, "": 3})
-    co = weighted_choice({"Co-": 1, "": 3})
+    vice = weighted_choice({"Vice ": 10, "Corporate Vice ": 1, "": 29})
+    co = weighted_choice({"Co-": 1, "": 4})
     title = random.choice((
-        vice + "Director", "Chief", co + "Head", vice + "President"
+        vice + "Director", "Chief", co + "Head", vice + "President",
+        "Supervisor"
     ))
     age = weighted_choice({"Senior ": 1, "": 3})
-    exec_ = weighted_choice({"Excutive ": 1, "": 5})
+    exec_ = weighted_choice({"Excutive ": 1, "Principal ": 1, "": 10})
     groupal = weighted_choice({"Group ": 1, "Global": 1, "": 18})
     department = random.choice((
         "Human Resources", "Controlling", "Internal Audit", "Legal",
         "Operations", "Management Office", "Customer Relations",
         "Client Leadership", "Client Relationship", "Business Planning",
-        "Business Operations", "IT Strategy", "IT Operations"
+        "Business Operations", "IT Strategy", "IT Operations", "Marketing",
+        "Strategic Planning", "Facilities Management", "Innovation",
+        "Identity", "Branding"
     ))
-    department_or_top_role = weighted_choice({department: 13, "Visionary": 1})
+    department_or_top_role = weighted_choice({
+        department: 19,
+        "Visionary": 1,
+        "Digital": 1,
+        "Technical": 1
+    })
     boss = weighted_choice({
         managing + age + exec_ + title + " of " + department: 1,
         groupal + "Chief " + department_or_top_role + " Officer": 3
