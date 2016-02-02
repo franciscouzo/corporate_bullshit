@@ -538,16 +538,23 @@ def faukon():
 
 def proposition():
     plural = random.choice((True, False))
-    r = random.randint(1, 100)
+    r = random.randint(1, 101)
     if r <= 5:
         return (faukon() + " " + eventual_adverb() + person_verb_and_ending(True) +
             eventual_postfixed_adverb())
     elif r <= 50:
         return ("the " + person(plural) + " " + eventual_adverb() +
             person_verb_and_ending(plural) + eventual_postfixed_adverb())
-    else:
+    elif r <= 97:
         return (add_random_article(thing(plural), plural) + " " + eventual_adverb() +
             thing_verb_and_ending(plural) + eventual_postfixed_adverb())
+    elif r <= 100:
+        return (thing_atom(False) + ", " + thing_atom(False) + " and " +
+            thing_atom(False) + " " + eventual_adverb() +
+            thing_verb_and_ending(True) + eventual_postfixed_adverb())
+    else:
+        return ("there can be no " + growth() + " until we can achieve " +
+            growth())
 
 def articulated_propositions():
     r = random.randint(1, 28)
