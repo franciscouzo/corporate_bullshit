@@ -524,12 +524,14 @@ def person_verb_and_ending(plural):
             add_random_article(thing(compl_sp), compl_sp))
 
 def faukon():
-    r = random.randint(1, 6)
+    r = random.randint(1, 9)
     if r <= 5:
         return random.choice((
             "we need to", "we've got to", "the reporting unit should",
             "controlling should",
-            "pursuing this route will enable us to"
+            "pursuing this route will enable us to",
+            "we will go the extra mile to", "we are working hard to",
+            "we continue to work tirelessly and diligently to"
         ))
     else:
         return "we must activate the " + matrix_or_so() + " to"
