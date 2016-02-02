@@ -348,7 +348,9 @@ def bad_things():
         "gaps", "inefficiencies", "overlaps", "known unknowns",
         "unknown unknowns", "soft cycle issues", "obstacles", "surprises",
         "weaknesses", "threats", "barriers to success", "barriers",
-        "shortcomings", "problems", "uncertainties"
+        "shortcomings", "problems", "uncertainties",
+        "unfavorable developments", "consumer/agent disconnects",
+        "underperforming areas", "information overloads"
     ))
 
 def eventual_adverb():
