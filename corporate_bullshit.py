@@ -378,8 +378,8 @@ def add_random_article(s, plural):
 
 def eventual_postfixed_adverb():
     plural = random.choice((True, False))
-    r = random.randint(1, 140)
-    if r <= 15:
+    r = random.randint(1, 155)
+    if r <= 22:
         return random.choice((
             " going forward", " within the industry", " across the board",
             " in this space", " from the get-go", " at the end of the day",
@@ -387,29 +387,34 @@ def eventual_postfixed_adverb():
             " by thinking outside of the box", " ahead of schedule",
             ", relative to our peers", " on a transitional basis",
             " by expanding boundaries", " by nurturing talent",
-            ", as a Tier 1 company"
+            ", as a Tier 1 company", " up-front", " on-the-fly",
+            " across our portfolio", " 50/50", " in the marketplace",
+            " by thinking and acting beyond boundaries",
+            " at the individual, team and organizational level"
         ))
-    elif r == 16:
-        return " using " + add_random_article(thing(plural), plural)
-    elif r == 17:
-        return " by leveraging " + add_random_article(thing(plural), plural)
-    elif r == 18:
-        return " taking advantage of " + add_random_article(thing(plural), plural)
-    elif r == 19:
-        return " within the " + matrix_or_so()
-    elif r == 20:
-        return " across the " + make_eventual_plural(matrix_or_so(), plural)
-    elif r == 21:
-        return " up-front"
-    elif r == 22:
-        return " resulting in " + growth()
     elif r == 23:
-        return " reaped from our " + growth()
+        return " using " + add_random_article(thing(plural), plural)
     elif r == 24:
-        return " as a consequence of " + growth()
+        return " by leveraging " + add_random_article(thing(plural), plural)
     elif r == 25:
+        return " taking advantage of " + add_random_article(thing(plural), plural)
+    elif r == 26:
+        return " within the " + matrix_or_so()
+    elif r == 27:
+        return " across the " + make_eventual_plural(matrix_or_so(), plural)
+    elif r == 28:
+        return " up-front"
+    elif r == 29:
+        return " resulting in " + growth()
+    elif r == 30:
+        return " reaped from our " + growth()
+    elif r == 31:
+        return " as a consequence of " + growth()
+    elif r == 32:
         return (" because " + add_random_article(thing(plural), plural) + " " +
                       build_plural_verb("produce", plural) + " " + growth())
+    elif r == 33:
+        return " up, down and across the " + matrix_or_so()
     else:
         return ""
 
