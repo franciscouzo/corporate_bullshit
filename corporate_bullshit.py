@@ -492,10 +492,15 @@ def person_verb_and_complement(plural):
     ))
     return build_plural_verb(inner, plural)
 
+def thing_verb_and_definite_ending(plural):
+    return build_plural_verb(random.choice((
+        "add value", "deliver maximum impact"
+    )), plural)
+
 def thing_verb_and_ending(plural):
     compl_sp = random.choice((True, False))
 
-    r = random.randint(1, 101)
+    r = random.randint(1, 102)
     if r <= 55:
         return (thing_verb_having_thing_complement(plural) + " " +
             add_random_article(thing(compl_sp), compl_sp))
@@ -503,7 +508,7 @@ def thing_verb_and_ending(plural):
         return (thing_verb_having_person_complement(plural) + " the " +
             person(compl_sp))
     else:
-        return build_plural_verb("add", plural) + " value"
+        return thing_verb_and_definite_ending(plural)
 
 def person_verb_and_ending(plural):
     compl_sp = random.choice((True, False))
