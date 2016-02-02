@@ -161,7 +161,29 @@ def thing_adjective():
         "transitional", "future", "game-changing", "enterprise-wide",
         "rock-solid", "bullet-proof", "superior", "genuine", "alert",
         "nimble", "phased", "selective", "macroscopic", "low-risk high-yield",
-        "interconnected", "high-margin"
+        "interconnected", "high-margin", "resilient", "high-definition",
+        "well-crafted", "fine-grained", "context-aware", "multi-tasked",
+        "feedback-based", "analytics-based", "fact-based", "usage-based",
+        "multi-channel", "omni-channel", "pre-approved", "specific",
+        "heart-of-the-business", "responsible", "socially conscious",
+        "results-centric", "business-led", "well-positioned", "end-to-end",
+        "high-quality", "siloed", "modular", "service-oriented",
+        "competitive", "scale-as-you-grow", "outside-in", "hyper-hybrid",
+        "long-running", "large-scale", "wide-ranging", "active", "stellar",
+        "dramatic", "aggressive", "innovative", "high-powered",
+        "above-average", "result-driven", "innovation-driven", "customized",
+        "outstanding", "non-mainstream", "customer-facing", "consumer-facing",
+        "unified", "cooperative", "laser-focused", "well-implemented",
+        "diversifying", "market-changing", "metrics-driven", "pre-integrated",
+        "solution-oriented", "impactful", "world-class", "turn-key",
+        "leading-edge", "next-generation", "extensible", "under-the-radar",
+        "high-grade", "structured", "trust-based", "intra-company",
+        "inter-company", "profit-oriented", "sizeable", "highly satisfactory",
+        "bi-face", "tri-face", "disruptive", "technological", "marketplace",
+        "fast-evolving", "open", "fully networked", "adoptable",
+        "trustworthy", "science-based", "non-manufacturing",
+        "multi-divisional", "controllable", "high-priority", "values-based",
+        "control-based"
     ))
 
 def timeless_event():
