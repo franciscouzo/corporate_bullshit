@@ -476,7 +476,19 @@ def person_verb_and_complement(plural):
         "manage the downside", "stay in the wings", "come to a landing",
         "shoot it over", "move the needle", "connect the dots",
         "connect the dots to the end game", "reset the benchmark",
-        "take it offline", "peel the onion", "drill down"
+        "take it offline", "peel the onion", "drill down",
+        "get from here to here", "do things differently",
+        "stretch the status quo", "challenge the status quo",
+        "challenge established ideas", "increase customer satisfaction",
+        "enable customer interaction", "manage the balance",
+        "turn every stone", "drive revenue", "rise to the challenge",
+        "keep it on the radar", "stay on trend", "hunt the business down",
+        "push the envelope to the tilt", "execute on priorities",
+        "stand out from the crowd", "make the abstract concrete",
+        "manage the mix", "grow", "accelerate the strategy",
+        "enhance the strength", "create long-term value",
+        "meet the challenges", "move the progress forward",
+        "do the right projects", "do the projects right", "do more with less"
     ))
     return build_plural_verb(inner, plural)
 
