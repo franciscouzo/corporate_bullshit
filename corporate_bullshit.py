@@ -204,7 +204,7 @@ def growth():
     return superlative + " " + improvement;
 
 def thing_atom(plural):
-    r = random.randint(1, 170)
+    r = random.randint(1, 194)
     if r == 1:
         inner = matrix_or_so()
     else:
@@ -250,11 +250,18 @@ def thing_atom(plural):
             "support structure", "standardization", "objective", "footprint",
             "transformation process", "policy", "sales target", "ecosystem",
             "market practice", "atmosphere", "operating strategy",
-            "core competency"
+            "core competency", "market practice", "operating strategy",
+            "insight", "accomplishment", "correlation", "touchpoint",
+            "knowledge transfer", "correlation", "capability", "gamification",
+            "smooth transition", "leadership strategy", "collaboration",
+            "success factor", "lever", "breakthrough", "open-door policy",
+            "recalibration", "wow factor", "onboarding solution",
+            "brand pyramid",  "dashboard",  "branding",
+            "local-for-local strategy"
         ))
 
     if not plural:
-        r = random.randint(1, 200)
+        r = random.randint(1, 495)
         if r == 1:
             return timeless_event()
         elif r <= 78:
@@ -282,20 +289,36 @@ def thing_atom(plural):
                 "line-of-sight", "scoping", "line-up", "predictability",
                 "recognition", "investor confidence", "competitive advantage",
                 "uniformity", "competitiveness", "big picture",
-                "resourcefulness", "quality", "upside focus"
+                "resourcefulness", "quality", "upside focus", "sustainability",
+                "resiliency", "social sphere", "intuitiveness",
+                "effectiveness", "competitiveness", "resourcefulness",
+                "informationalization", "role building", "talent retention",
+                "innovativeness", "Economic Value Creation",
+                "intellectual capital", "high quality",
+                "full range of products", "technical strength",
+                "quality assurance", "specification quality",
+                "market environment", "client perspective",
+                "solution orientation", "client satisfaction", "integrity",
+                "reputation", "time-to-market", "innovative edge",
+                "book value growth", "global network", "ability to deliver",
+                "active differentiation", "solid profitability",
+                "core capacity", "digital economy",
+                "white-collar productivity", "white-collar efficiency"
             ))
         else:
             return inner
     else:
-        r = random.randint(1, 200)
-        if r <= 12:
+        r = random.randint(1, 204)
+        if r <= 17:
             return random.choice((
                 "key target markets", "style guidelines",
                 "key performance indicators", "market conditions",
                 "market forces", "market opportunities", "tactics",
                 "organizing principles", "interpersonal skills",
                 "roles and responsibilities", "cost savings",
-                "lessons learned"
+                "lessons learned", "client needs", "requests / solutions",
+                "mobile strategies", "expectations and allocations",
+                "workshops"
             ))
         else:
             return make_eventual_plural(inner, True)
