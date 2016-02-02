@@ -78,16 +78,17 @@ def boss():
 
 def person(plural):
     if not plural:
-        return weighted_choice({
-            random.choice((
+        r = random.randint(1, 17)
+        if r <= 12:
+            return random.choice((
                 "steering committee", "group", "project manager",
                 thing_atom(random.choice((True, False))) + " champion",
                 "community", "sales manager", "enabler", "powerful champion",
                 "thought leader", "gatekeeper", "resource",
                 "senior support staff"
-            )): 12,
-            boss(): 5
-        })
+            ))
+        else:
+            return boss()
     else:
         return random.choice((
             "key people", "human resources", "customers", "clients",
@@ -168,55 +169,62 @@ def growth():
     return superlative + " " + improvement;
 
 def thing_atom(plural):
-    inner = random.choice((
-        "mission", "vision", "guideline", "roadmap", "timeline", matrix_or_so(),
-        "win-win solution", "baseline starting point", "sign-off",
-        "escalation", "system", "Management Information System",
-        "Quality Management System", "planning", "target", "calibration",
-        "Control Information System", "process", "talent", "execution",
-        "leadership", "performance", "solution provider", "value",
-        "value creation", "feedback", "document","bottom line", "momentum",
-        "opportunity", "credibility", "issue", "core meeting", "platform",
-        "niche", "content", "communication", "goal", "skill", "alternative",
-        "culture", "requirement", "potential", "challenge", "empowerment",
-        "benchmarking", "framework", "benchmark", "implication",
-        "integration", "enabler", "control", "trend", "business case",
-        "architecture", "action plan", "project", "review cycle",
-        "trigger event", "strategy formulation", "decision",
-        "enhanced data capture", "energy", "plan", "initiative", "priority",
-        "synergy", "incentive", "dialogue", "concept", "time-phase",
-        "projection", "blended approach", "low hanging fruit",
-        "forward planning", "pre-plan", "pipeline", "bandwidth", "workshop",
-        "paradigm", "paradigm shift", "strategic staircase", "cornerstone",
-        "executive talent", "evolution", "workflow", "message",
-        "risk/return profile", "efficient frontier", "pillar",
-        "internal client", "consistency", "on-boarding process",
-        "dotted line", "action item", "cost efficiency", "channel",
-        "convergence", "infrastructure", "metric", "technology",
-        "relationship", "partnership", "supply-chain", "portal", "solution",
-        "business line", "white paper", "scalability", "innovation",
-        "Strategic Management System", "Balanced Scorecard", "differentiator",
-        "case study", "idiosyncrasy", "benefit", "say/do ratio",
-        "segmentation", "image", "realignment", "business model",
-        "business philosophy", "branding", "methodology", "profile",
-        "measure", "measurement", "philosophy", "branding strategy",
-        "efficiency", "industry", "commitment", "perspective",
-        "risk appetite", "best practice", "brand identity",
-        "customer centricity", "shareholder value", "attitude", "mindset",
-        "flexibility", "granularity", "engagement", "pyramid", "market",
-        "diversity", "interdependency", "scaling", "asset", "flow charting",
-        "value proposition", "performance culture", "change", "reward",
-        "learning", "next step", "delivery framework", "structure",
-        "support structure", "standardization", "objective", "footprint",
-        "transformation process", "policy", "sales target", "ecosystem",
-        "market practice", "atmosphere", "operating strategy",
-        "core competency"
-    ))
+    r = random.randint(1, 170)
+    if r == 1:
+        inner = matrix_or_so()
+    else:
+        inner = random.choice((
+            "mission", "vision", "guideline", "roadmap", "timeline",
+            "win-win solution", "baseline starting point", "sign-off",
+            "escalation", "system", "Management Information System",
+            "Quality Management System", "planning", "target", "calibration",
+            "Control Information System", "process", "talent", "execution",
+            "leadership", "performance", "solution provider", "value",
+            "value creation", "feedback", "document","bottom line", "momentum",
+            "opportunity", "credibility", "issue", "core meeting", "platform",
+            "niche", "content", "communication", "goal", "skill", "alternative",
+            "culture", "requirement", "potential", "challenge", "empowerment",
+            "benchmarking", "framework", "benchmark", "implication",
+            "integration", "enabler", "control", "trend", "business case",
+            "architecture", "action plan", "project", "review cycle",
+            "trigger event", "strategy formulation", "decision",
+            "enhanced data capture", "energy", "plan", "initiative", "priority",
+            "synergy", "incentive", "dialogue", "concept", "time-phase",
+            "projection", "blended approach", "low hanging fruit",
+            "forward planning", "pre-plan", "pipeline", "bandwidth", "workshop",
+            "paradigm", "paradigm shift", "strategic staircase", "cornerstone",
+            "executive talent", "evolution", "workflow", "message",
+            "risk/return profile", "efficient frontier", "pillar",
+            "internal client", "consistency", "on-boarding process",
+            "dotted line", "action item", "cost efficiency", "channel",
+            "convergence", "infrastructure", "metric", "technology",
+            "relationship", "partnership", "supply-chain", "portal", "solution",
+            "business line", "white paper", "scalability", "innovation",
+            "Strategic Management System", "Balanced Scorecard", "differentiator",
+            "case study", "idiosyncrasy", "benefit", "say/do ratio",
+            "segmentation", "image", "realignment", "business model",
+            "business philosophy", "branding", "methodology", "profile",
+            "measure", "measurement", "philosophy", "branding strategy",
+            "efficiency", "industry", "commitment", "perspective",
+            "risk appetite", "best practice", "brand identity",
+            "customer centricity", "shareholder value", "attitude", "mindset",
+            "flexibility", "granularity", "engagement", "pyramid", "market",
+            "diversity", "interdependency", "scaling", "asset", "flow charting",
+            "value proposition", "performance culture", "change", "reward",
+            "learning", "next step", "delivery framework", "structure",
+            "support structure", "standardization", "objective", "footprint",
+            "transformation process", "policy", "sales target", "ecosystem",
+            "market practice", "atmosphere", "operating strategy",
+            "core competency"
+        ))
 
     if not plural:
-        return weighted_choice({
-            random.choice((
-                timeless_event(), "team building", "focus", "strategy",
+        r = random.randint(1, 200)
+        if r == 1:
+            return timeless_event()
+        elif r <= 78:
+            return random.choice((
+                "team building", "focus", "strategy",
                 "planning granularity", "core business", "implementation",
                 "intelligence", "governance", "ROE", "EBITDA",
                 "enterprise content management", "excellence", "trust",
@@ -240,33 +248,41 @@ def thing_atom(plural):
                 "recognition", "investor confidence", "competitive advantage",
                 "uniformity", "competitiveness", "big picture",
                 "resourcefulness", "quality", "upside focus"
-            )): 78,
-            inner: 122
-        })
+            ))
+        else:
+            return inner
     else:
-        return weighted_choice({
-            random.choice((
+        r = random.randint(1, 200)
+        if r <= 12:
+            return random.choice((
                 "key target markets", "style guidelines",
                 "key performance indicators", "market conditions",
                 "market forces", "market opportunities", "tactics",
                 "organizing principles", "interpersonal skills",
                 "roles and responsibilities", "cost savings",
                 "lessons learned"
-            )): 12,
-            make_eventual_plural(inner, True): 188
-        })
+            ))
+        else:
+            return make_eventual_plural(inner, True)
 
 def thing(plural):
-    return weighted_choice({
-        thing_adjective() + ", " + thing_adjective() + " " + thing_atom(plural): 10,
-        thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural): 5,
-        thing_adjective() + " " + thing_atom(plural): 56,
-        thing_adjective() + " and/or " + thing_adjective() + " " + thing_atom(plural): 2,
-        growth(): 2,
-        thing_adjective() + ", " + thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural): 5,
-        thing_adjective() + ", " + thing_adjective() + ", " + thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural): 5,
-        thing_atom(plural): 25
-    })
+    r = random.randint(1, 110)
+    if r <= 10:
+        return thing_adjective() + ", " + thing_adjective() + " " + thing_atom(plural)
+    elif r <= 15:
+        return thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural)
+    elif r <= 71:
+        return thing_adjective() + " " + thing_atom(plural)
+    elif r <= 73:
+        return thing_adjective() + " and/or " + thing_adjective() + " " + thing_atom(plural)
+    elif r <= 75:
+        return growth()
+    elif r <= 80:
+        return thing_adjective() + ", " + thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural)
+    elif r <= 85:
+        return thing_adjective() + ", " + thing_adjective() + ", " + thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural)
+    else:
+        return thing_atom(plural)
 
 def bad_things():
     return random.choice((
@@ -278,28 +294,32 @@ def bad_things():
     ))
 
 def eventual_adverb():
-    return weighted_choice({
-        random.choice((
+    r = random.randint(1, 4)
+    if r == 1:
+        return random.choice((
             "interactively", "credibly", "quickly", "proactively", "200%",
             "24/7", "globally", "culturally", "technically", "strategically",
             "swiftly", "cautiously", "expediently", "organically",
             "carefully", "significantly", "conservatively","adequately",
             "genuinely"
-        )) + " ": 1,
-        "": 3
-    })
+        )) + " "
+    else:
+        return ""
 
 def add_random_article(s, plural):
-    return weighted_choice({
-        "the " + s: 2,
-        "our " + s: 4,
-        add_indefinite_article(s, plural): 9
-    })
+    r = random.randint(1, 15)
+    if r <= 2:
+        return "the " + s
+    elif r <= 6:
+        return "our " + s
+    else:
+        return add_indefinite_article(s, plural)
 
 def eventual_postfixed_adverb():
     plural = random.choice((True, False))
-    return weighted_choice({
-        random.choice((
+    r = random.randint(1, 140)
+    if r <= 15:
+        return random.choice((
             " going forward", " within the industry", " across the board",
             " in this space", " from the get-go", " at the end of the day",
             " throughout the organization", " as part of the plan",
@@ -307,19 +327,30 @@ def eventual_postfixed_adverb():
             ", relative to our peers", " on a transitional basis",
             " by expanding boundaries", " by nurturing talent",
             ", as a Tier 1 company"
-            " using " + add_random_article(thing(plural), plural),
-            " by leveraging " + add_random_article(thing(plural), plural),
-            " taking advantage of " + add_random_article(thing(plural), plural),
-            " within the " + matrix_or_so(),
-            " across the " + make_eventual_plural(matrix_or_so(), plural),
-            " up-front", " resulting in " + growth(),
-            " reaped from our " + growth(),
-            " as a consequence of " + growth(),
-            " because " + add_random_article(thing(plural), plural) + " " +
-                            build_plural_verb("produce", plural) + " " + growth()
-        )): 25,
-        "": 115
-    })
+        ))
+    elif r == 16:
+        return " using " + add_random_article(thing(plural), plural)
+    elif r == 17:
+        return " by leveraging " + add_random_article(thing(plural), plural)
+    elif r == 18:
+        return " taking advantage of " + add_random_article(thing(plural), plural)
+    elif r == 19:
+        return " within the " + matrix_or_so()
+    elif r == 20:
+        return " across the " + make_eventual_plural(matrix_or_so(), plural)
+    elif r == 21:
+        return " up-front"
+    elif r == 22:
+        return " resulting in " + growth()
+    elif r == 23:
+        return " reaped from our " + growth()
+    elif r == 24:
+        return " as a consequence of " + growth()
+    elif r == 25:
+        return (" because " + add_random_article(thing(plural), plural) + " " +
+                      build_plural_verb("produce", plural) + " " + growth())
+    else:
+        return ""
 
 def person_verb_having_thing_complement(plural):
     inner = random.choice((
@@ -386,55 +417,73 @@ def person_verb_and_complement(plural):
 def thing_verb_and_ending(plural):
     compl_sp = random.choice((True, False))
 
-    return weighted_choice({
-        thing_verb_having_thing_complement(plural) + " " +
-            add_random_article(thing(compl_sp), compl_sp): 55,
-        thing_verb_having_person_complement(plural) + " the " +
-            person(compl_sp): 45,
-        build_plural_verb("add", plural) + " value": 1
-    })
+    r = random.randint(1, 101)
+    if r <= 55:
+        return (thing_verb_having_thing_complement(plural) + " " +
+            add_random_article(thing(compl_sp), compl_sp))
+    elif r <= 100:
+        return (thing_verb_having_person_complement(plural) + " the " +
+            person(compl_sp))
+    else:
+        return build_plural_verb("add", plural) + " value"
 
 def person_verb_and_ending(plural):
     compl_sp = random.choice((True, False))
-    return weighted_choice({
-        person_verb_and_complement(plural): 10,
-        person_verb_having_bad_thing_complement(plural) + " " +
-            add_random_article(bad_things(), plural): 5,
-        person_verb_having_thing_complement(plural) + " " +
-            add_random_article(thing(compl_sp), compl_sp): 80
-    })
+    
+    r = random.randint(1, 95)
+    if r <= 10:
+        return person_verb_and_complement(plural)
+    elif r <= 15:
+        return (person_verb_having_bad_thing_complement(plural) + " " +
+            add_random_article(bad_things(), plural))
+    else:
+        return (person_verb_having_thing_complement(plural) + " " +
+            add_random_article(thing(compl_sp), compl_sp))
 
 def faukon():
-    return random.choice((
-        "we need to", "we've got to", "the reporting unit should",
-        "controlling should",
-        "we must activate the " + matrix_or_so() + " to",
-        "pursuing this route will enable us to"
-    ))
+    r = random.randint(1, 6)
+    if r <= 5:
+        return random.choice((
+            "we need to", "we've got to", "the reporting unit should",
+            "controlling should",
+            "pursuing this route will enable us to"
+        ))
+    else:
+        return "we must activate the " + matrix_or_so() + " to"
 
 def proposition():
     plural = random.choice((True, False))
-    return weighted_choice({
-        faukon() + " " + eventual_adverb() + person_verb_and_ending(True) +
-            eventual_postfixed_adverb(): 5,
-        "the " + person(plural) + " " + eventual_adverb() +
-            person_verb_and_ending(plural) + eventual_postfixed_adverb(): 45,
-        add_random_article(thing(plural), plural) + " " + eventual_adverb() +
-            thing_verb_and_ending(plural) + eventual_postfixed_adverb(): 50
-    })
+    r = random.randint(1, 100)
+    if r <= 5:
+        return (faukon() + " " + eventual_adverb() + person_verb_and_ending(True) +
+            eventual_postfixed_adverb())
+    elif r <= 50:
+        return ("the " + person(plural) + " " + eventual_adverb() +
+            person_verb_and_ending(plural) + eventual_postfixed_adverb())
+    else:
+        return (add_random_article(thing(plural), plural) + " " + eventual_adverb() +
+            thing_verb_and_ending(plural) + eventual_postfixed_adverb())
 
 def articulated_propositions():
-    return weighted_choice({
-        proposition(): 17,
-        proposition() + "; this is why " + proposition(): 1,
-        proposition() + "; nevertheless " + proposition(): 1,
-        proposition() + ", whereas " + proposition(): 1,
-        "our gut-feeling is that " + proposition(): 1,
-        proposition() + ", while " + proposition(): 4,
-        proposition() + ". In the same time, " + proposition(): 1,
-        proposition() + ". As a result, " + proposition(): 1,
-        proposition() + ", whilst " + proposition(): 1
-    })
+    r = random.randint(1, 28)
+    if r <= 17:
+        return proposition()
+    elif r == 18:
+        return proposition() + "; this is why " + proposition()
+    elif r == 19:
+        return proposition() + "; nevertheless " + proposition()
+    elif r == 20:
+        return proposition() + ", whereas " + proposition()
+    elif r == 21:
+        return "our gut-feeling is that " + proposition()
+    elif r <= 25:
+        return proposition() + ", while " + proposition()
+    elif r == 26:
+        return proposition() + ". In the same time, " + proposition()
+    elif r == 27:
+        return proposition() + ". As a result, " + proposition()
+    else:
+        return proposition() + ", whilst " + proposition()
 
 def sentence():
     return articulated_propositions().capitalize() + "."
