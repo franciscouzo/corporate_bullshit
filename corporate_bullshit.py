@@ -512,7 +512,7 @@ def thing_verb_and_ending(plural):
 
 def person_verb_and_ending(plural):
     compl_sp = random.choice((True, False))
-    
+
     r = random.randint(1, 95)
     if r <= 10:
         return person_verb_and_complement(plural)
@@ -601,10 +601,10 @@ def sentence_guaranteed_amount(count):
     return " ".join(sentence() for i in xrange(count))
 
 def workshop():
-    return sentence_guaranteed_amount(500, dialog_mark)
+    return sentence_guaranteed_amount(500)
 
 def short_workshop():
-    return sentence_guaranteed_amount(5, dialog_mark)
+    return sentence_guaranteed_amount(5)
 
 def financial_report():
-    return sentences("")
+    return sentences()
