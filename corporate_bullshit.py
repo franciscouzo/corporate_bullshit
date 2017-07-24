@@ -1,48 +1,51 @@
 import random
 
-def make_eventual_plural(s, plural):
-    if len(s) < 1 or not plural:
-        return s
-    elif s == "matrix":
+def make_eventual_plural(word, plural):
+    if not word or not plural:
+        return word
+
+    if word == "matrix":
         return "matrices"
-    elif s == "analysis":
+
+    if word == "analysis":
         return "analyses"
-    else:
-        if s[-1] in "sxzh":
-            return s + "es"
-        elif s[-1] == "y":
-            return s[:-1] + "ies"
-        else:
-            return s + "s"
+
+    if word[-1] in "sxzh":
+        return word + "es"
+
+    if word[-1] == "y":
+        return word[:-1] + "ies"
+
+    return word + "s"
 
 def build_plural_verb(verb, plural):
     last = len(verb.rstrip()) - 1
     if plural:
         return verb
-    else:
-        if verb[last] in "osz":
+
+    if verb[last] in "osz":
+        return verb[:last + 1] + "es" + verb[last + 1:]
+    elif verb[last] == "h":
+        if verb[last - 1] in "cs":
             return verb[:last + 1] + "es" + verb[last + 1:]
-        elif verb[last] == "h":
-            if verb[last - 1] in "cs":
-                return verb[:last + 1] + "es" + verb[last + 1:]
-            else:
-                return verb[:last + 1] + "s" + verb[last + 1:]
-        elif verb[last] == "y":
-            if verb[last - 1] in "aeiou":
-                return verb[:last + 1] + "s" + verb[last + 1:]
-            else:
-                return verb[:last] + "ies" + verb[last + 1:]
         else:
             return verb[:last + 1] + "s" + verb[last + 1:]
-
-def add_indefinite_article(s, plural):
-    if plural:
-        return s
-    else:
-        if s[0] in "aeiou":
-            return "an " + s
+    elif verb[last] == "y":
+        if verb[last - 1] in "aeiou":
+            return verb[:last + 1] + "s" + verb[last + 1:]
         else:
-            return "a " + s
+            return verb[:last] + "ies" + verb[last + 1:]
+    else:
+        return verb[:last + 1] + "s" + verb[last + 1:]
+
+def add_indefinite_article(word, plural):
+    if plural:
+        return word
+
+    if word[0] in "aeiou":
+        return "an " + word
+
+    return "a " + word
 
 def weighted_choice(choices):
     total = sum(w for c, w in choices.iteritems())
@@ -86,17 +89,15 @@ def boss():
         "Officer": 16
     })
 
-    boss = weighted_choice({
+    return weighted_choice({
         managing + age + exec_ + title + " of " + department: 1,
-        groupal + "Chief " + department_or_top_role + " " +
-            officer_or_catalyst: 3
+        (groupal + "Chief " + department_or_top_role + " " +
+         officer_or_catalyst): 3
     })
-    return boss
 
 def person(plural):
     if not plural:
-        r = random.randint(1, 37)
-        if r <= 25:
+        if random.randint(1, 37) <= 25:
             return random.choice((
                 "steering committee", "group", "project manager",
                 thing_atom(random.choice((True, False))) + " champion",
@@ -108,18 +109,18 @@ def person(plural):
                 "white-collar workforce", "innovator", "game changer",
                 "visionary", "market thinker", "market thinker"
             ))
-        else:
-            return boss()
-    else:
-        return random.choice((
-            "key people", "human resources", "customers", "clients",
-            "resources", "team players", "enablers", "stakeholders",
-            "standard-setters", "partners", "business leaders",
-            "thinkers/planners", "white-collar workers",
-            "board-level executives", "key representatives", "innovators",
-            "policy makers", "pioneers", "game changers", "market thinkers",
-            "thought leaders", "mediators", "facilitators", "attackers"
-        ))
+
+        return boss()
+
+    return random.choice((
+        "key people", "human resources", "customers", "clients", "resources",
+        "team players", "enablers", "stakeholders", "standard-setters",
+        "partners", "business leaders", "thinkers/planners",
+        "white-collar workers", "board-level executives",
+        "key representatives", "innovators", "policy makers", "pioneers",
+        "game changers", "market thinkers", "thought leaders", "mediators",
+        "facilitators", "attackers"
+    ))
 
 def matrix_or_so():
     return weighted_choice({
@@ -258,8 +259,7 @@ def growth():
     return superlative + " " + growth_atom()
 
 def thing_atom(plural):
-    r = random.randint(1, 194)
-    if r == 1:
+    if random.randint(1, 194) == 1:
         inner = matrix_or_so()
     else:
         inner = random.choice((
@@ -312,7 +312,7 @@ def thing_atom(plural):
             "smooth transition", "leadership strategy", "collaboration",
             "success factor", "lever", "breakthrough", "open-door policy",
             "recalibration", "wow factor", "onboarding solution",
-            "brand pyramid",  "dashboard",  "branding",
+            "brand pyramid", "dashboard", "branding",
             "local-for-local strategy", "cross-sell message",
             "up-sell message", "divisional structure", "value chain",
             "microsegment", "rollout plan", "leadership development system",
@@ -390,8 +390,7 @@ def thing_atom(plural):
         else:
             return inner
     else:
-        r = random.randint(1, 263)
-        if r <= 17:
+        if random.randint(1, 263) <= 17:
             return random.choice((
                 "key target markets", "style guidelines",
                 "key performance indicators", "market conditions",
@@ -405,25 +404,31 @@ def thing_atom(plural):
                 "social implications", "analytics", "advanced analytics",
                 "growth years", "big data", "adjacencies", "core competences"
             ))
-        else:
-            return make_eventual_plural(inner, True)
+
+        return make_eventual_plural(inner, True)
 
 def thing(plural):
     r = random.randint(1, 160)
     if r <= 10:
-        return thing_adjective() + ", " + thing_adjective() + " " + thing_atom(plural)
+        return (thing_adjective() + ", " + thing_adjective() + " " +
+                thing_atom(plural))
     elif r <= 15:
-        return thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural)
+        return (thing_adjective() + " and " + thing_adjective() + " " +
+                thing_atom(plural))
     elif r <= 80:
         return thing_adjective() + " " + thing_atom(plural)
     elif r <= 82:
-        return thing_adjective() + " and/or " + thing_adjective() + " " + thing_atom(plural)
+        return (thing_adjective() + " and/or " + thing_adjective() + " " +
+                thing_atom(plural))
     elif r <= 84:
         return growth()
     elif r <= 90:
-        return thing_adjective() + ", " + thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural)
+        return (thing_adjective() + ", " + thing_adjective() + " and " +
+                thing_adjective() + " " + thing_atom(plural))
     elif r <= 94:
-        return thing_adjective() + ", " + thing_adjective() + ", " + thing_adjective() + " and " + thing_adjective() + " " + thing_atom(plural)
+        return (thing_adjective() + ", " + thing_adjective() + ", " +
+                thing_adjective() + " and " + thing_adjective() + " " +
+                thing_atom(plural))
     else:
         return thing_atom(plural)
 
@@ -443,28 +448,27 @@ def bad_things():
     ))
 
 def eventual_adverb():
-    r = random.randint(1, 4)
-    if r == 1:
+    if random.randint(1, 4) == 1:
         return random.choice((
             "interactively", "credibly", "quickly", "proactively", "200%",
             "24/7", "globally", "culturally", "technically", "strategically",
             "swiftly", "cautiously", "expediently", "organically",
-            "carefully", "significantly", "conservatively","adequately",
+            "carefully", "significantly", "conservatively", "adequately",
             "genuinely", "efficiently", "seamlessly", "consistently",
             "diligently", "dramatically", "straightforwardly",
             "differentially", "gradually", "aggressively", "cost-effectively"
         )) + " "
-    else:
-        return ""
 
-def add_random_article(s, plural):
+    return ""
+
+def add_random_article(word, plural):
     r = random.randint(1, 15)
     if r <= 2:
-        return "the " + s
+        return "the " + word
     elif r <= 6:
-        return "our " + s
+        return "our " + word
     else:
-        return add_indefinite_article(s, plural)
+        return add_indefinite_article(word, plural)
 
 def eventual_postfixed_adverb():
     plural = random.choice((True, False))
@@ -506,7 +510,7 @@ def eventual_postfixed_adverb():
         return " as a consequence of " + add_indefinite_article(growth(), False)
     elif r == 40:
         return (" because " + add_random_article(thing(plural), plural) + " " +
-                      build_plural_verb("produce", plural) + " " + growth())
+                build_plural_verb("produce", plural) + " " + growth())
     elif r == 41:
         return " up, down and across the " + matrix_or_so()
     elif r == 42:
@@ -606,7 +610,8 @@ def person_verb_and_definite_ending(plural, infinitive):
         "stretch our data bucket", "leapfrog the competition",
         "take the elevator beyond the top floor", "stick to the knitting",
         "bring our vision to reality",
-        "create an environment where " + thing_atom(False) + ", " + thing_atom(False) + " and " + thing_atom(False) + " can thrive",
+        ("create an environment where " + thing_atom(False) + ", " +
+         thing_atom(False) + " and " + thing_atom(False) + " can thrive"),
         "seize opportunities", "create momentum", "generate company momentum",
         "pursue new opportunities",
     ))
@@ -627,10 +632,10 @@ def thing_verb_and_ending(plural):
     r = random.randint(1, 102)
     if r <= 55:
         return (thing_verb_having_thing_complement(plural) + " " +
-            add_random_article(thing(compl_sp), compl_sp))
+                add_random_article(thing(compl_sp), compl_sp))
     elif r <= 100:
         return (thing_verb_having_person_complement(plural) + " the " +
-            person(compl_sp))
+                person(compl_sp))
     else:
         return thing_verb_and_definite_ending(plural)
 
@@ -642,14 +647,13 @@ def person_verb_and_ending(plural, infinitive):
         return person_verb_and_definite_ending(plural, infinitive)
     elif r <= 15:
         return (person_verb_having_bad_thing_complement(plural) + " " +
-            add_random_article(bad_things(), plural))
+                add_random_article(bad_things(), plural))
     else:
         return (person_verb_having_thing_complement(plural) + " " +
-            add_random_article(thing(compl_sp), compl_sp))
+                add_random_article(thing(compl_sp), compl_sp))
 
 def faukon():
-    r = random.randint(1, 14)
-    if r <= 13:
+    if random.randint(1, 14) <= 13:
         return random.choice((
             "we need to", "we've got to", "the reporting unit should",
             "controlling should",
@@ -660,8 +664,8 @@ def faukon():
             "to continue our growth, we must", "we are going to",
             "we look forward to working together to"
         ))
-    else:
-        return "we must activate the " + matrix_or_so() + " to"
+
+    return "we must activate the " + matrix_or_so() + " to"
 
 def person_infinitive_verb_and_ending():
     return person_verb_and_ending(True, True)
@@ -671,24 +675,24 @@ def proposition():
     r = random.randint(1, 109)
     if r <= 5:
         return (faukon() + " " + person_infinitive_verb_and_ending() +
-            eventual_postfixed_adverb())
+                eventual_postfixed_adverb())
     elif r <= 50:
         return ("the " + person(plural) + " " + eventual_adverb() +
-            person_verb_and_ending(plural, False) +
-            eventual_postfixed_adverb())
+                person_verb_and_ending(plural, False) +
+                eventual_postfixed_adverb())
     elif r <= 97:
         return (add_random_article(thing(plural), plural) + " " + eventual_adverb() +
-            thing_verb_and_ending(plural) + eventual_postfixed_adverb())
+                thing_verb_and_ending(plural) + eventual_postfixed_adverb())
     elif r <= 100:
         return (thing_atom(False) + ", " + thing_atom(False) + " and " +
-            thing_atom(False) + " " + eventual_adverb() +
-            thing_verb_and_ending(True) + eventual_postfixed_adverb())
+                thing_atom(False) + " " + eventual_adverb() +
+                thing_verb_and_ending(True) + eventual_postfixed_adverb())
     elif r == 101:
         return ("there can be no " + growth_atom() + " until we can achieve " +
-            add_indefinite_article(growth(), False))
+                add_indefinite_article(growth(), False))
     elif r == 102:
         return (thing(True) + " challenge us to " +
-            person_infinitive_verb_and_ending())
+                person_infinitive_verb_and_ending())
     elif r == 103:
         return thing(False) + " is all about " + thing(plural)
     elif r == 104:
@@ -699,11 +703,11 @@ def proposition():
         return "opting out of " + thing(plural) + " is not a choice"
     elif r == 107:
         return (add_indefinite_article(growth(), False) +
-            " goes hand-in-hand with " +
-            add_indefinite_article(growth(), False))
+                " goes hand-in-hand with " +
+                add_indefinite_article(growth(), False))
     elif r == 108:
-        return ("the " + person(plural) +
-           " will be well equipped to " + person_infinitive_verb_and_ending())
+        return ("the " + person(plural) + " will be well equipped to " +
+                person_infinitive_verb_and_ending())
     else:
         return thing_atom(False) + " is a matter of speed of action"
 
@@ -730,17 +734,17 @@ def articulated_propositions():
         return "our gut-feeling is that " + proposition()
     elif r <= 376:
         return ("the point is not merely to " +
-            person_infinitive_verb_and_ending() +
-            ". The point is to " + person_infinitive_verb_and_ending())
+                person_infinitive_verb_and_ending() +
+                ". The point is to " + person_infinitive_verb_and_ending())
     elif r <= 380:
         p1 = random.choice((True, False))
         p2 = random.choice((True, False))
         return ("it's not about " + add_random_article(thing(p1), p1) +
-            ". It's about " + add_random_article(thing(p2), p2))
+                ". It's about " + add_random_article(thing(p2), p2))
     elif r <= 383:
         return ("our challenge is not to " +
-            person_infinitive_verb_and_ending() + ". Our challenge is to " +
-            person_infinitive_verb_and_ending())
+                person_infinitive_verb_and_ending() + ". Our challenge is to " +
+                person_infinitive_verb_and_ending())
     elif r <= 386:
         return "going forward, " + proposition()
     elif r <= 389:
@@ -753,24 +757,24 @@ def articulated_propositions():
         return "first and foremost, " + proposition()
     else:
         return ("the game is all about " +
-            thing_atom(False) + ", " +
-            thing_atom(False) + ", " +
-            thing_atom(False) + ", " +
-            thing_atom(False) + ", and " +
-            thing_atom(False) + " - not " +
-            thing_atom(False) + ", " +
-            thing_atom(False) + ", " +
-            thing_atom(False) + ", " +
-            thing_atom(False) + ", and " +
-            thing_atom(False))
+                thing_atom(False) + ", " +
+                thing_atom(False) + ", " +
+                thing_atom(False) + ", " +
+                thing_atom(False) + ", and " +
+                thing_atom(False) + " - not " +
+                thing_atom(False) + ", " +
+                thing_atom(False) + ", " +
+                thing_atom(False) + ", " +
+                thing_atom(False) + ", and " +
+                thing_atom(False))
 
 def sentence():
-    proposition = articulated_propositions()
-    return proposition[0].upper() + proposition[1:] + "."
+    propositions = articulated_propositions()
+    return propositions[0].upper() + propositions[1:] + "."
 
 def sentences():
     ret = []
-    for i in xrange(max(3, int(random.normalvariate(30, 10)))):
+    for _ in xrange(max(3, int(random.normalvariate(30, 10)))):
         ret.append(sentence())
     return " ".join(ret)
 
