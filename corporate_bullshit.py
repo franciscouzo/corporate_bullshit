@@ -48,10 +48,10 @@ def add_indefinite_article(word, plural):
     return "a " + word
 
 def weighted_choice(choices):
-    total = sum(w for c, w in choices.iteritems())
+    total = sum(choices.values())
     r = random.uniform(0, total)
     upto = 0
-    for c, w in choices.iteritems():
+    for c, w in choices.items():
         if upto + w > r:
             return c
         upto += w
