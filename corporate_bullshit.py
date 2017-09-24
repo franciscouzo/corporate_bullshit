@@ -1,5 +1,6 @@
 import random
 
+
 def make_eventual_plural(word, plural):
     if not word or not plural:
         return word
@@ -17,6 +18,7 @@ def make_eventual_plural(word, plural):
         return word[:-1] + "ies"
 
     return word + "s"
+
 
 def build_plural_verb(verb, plural):
     last = len(verb.rstrip()) - 1
@@ -38,6 +40,7 @@ def build_plural_verb(verb, plural):
     else:
         return verb[:last + 1] + "s" + verb[last + 1:]
 
+
 def add_indefinite_article(word, plural):
     if plural:
         return word
@@ -47,6 +50,7 @@ def add_indefinite_article(word, plural):
 
     return "a " + word
 
+
 def weighted_choice(choices):
     total = sum(choices.values())
     r = random.uniform(0, total)
@@ -55,6 +59,7 @@ def weighted_choice(choices):
         if upto + w > r:
             return c
         upto += w
+
 
 def boss():
     managing = weighted_choice({
@@ -95,6 +100,7 @@ def boss():
          officer_or_catalyst): 3
     })
 
+
 def person(plural):
     if not plural:
         if random.randint(1, 39) <= 25:
@@ -123,10 +129,12 @@ def person(plural):
         "facilitators", "attackers", "initiators", "decision makers"
     ))
 
+
 def matrix_or_so():
     return weighted_choice({
         "organization": 2, "silo": 3, "matrix": 3, "cube": 1, "sphere": 1
     })
+
 
 def thing_adjective():
     return random.choice((
@@ -234,10 +242,12 @@ def thing_adjective():
         "bespoke", "pivotal", "efficiency-enhancing"
     ))
 
+
 def timeless_event():
     return random.choice((
         "kick-off", "roll-out", "client event", "quarter results"
     ))
+
 
 def growth_atom():
     return random.choice((
@@ -248,6 +258,7 @@ def growth_atom():
         "revenue growth", "profits growth", "growth momentum",
         "increase in sales"
     ))
+
 
 def growth():
     superlative = random.choice((
@@ -260,6 +271,7 @@ def growth():
         "better-than-average"
     ))
     return superlative + " " + growth_atom()
+
 
 def thing_atom(plural):
     if random.randint(1, 194) == 1:
@@ -416,6 +428,7 @@ def thing_atom(plural):
 
         return make_eventual_plural(inner, True)
 
+
 def thing(plural):
     r = random.randint(1, 160)
     if r <= 10:
@@ -441,6 +454,7 @@ def thing(plural):
     else:
         return thing_atom(plural)
 
+
 def bad_things():
     return random.choice((
         "issues", "intricacies", "organizational diseconomies", "black swans",
@@ -456,6 +470,7 @@ def bad_things():
         "dilemmas", "interdependencies", "discontinuities", "hiccups"
     ))
 
+
 def eventual_adverb():
     if random.randint(1, 4) == 1:
         return random.choice((
@@ -470,6 +485,7 @@ def eventual_adverb():
 
     return ""
 
+
 def add_random_article(word, plural):
     r = random.randint(1, 15)
     if r <= 2:
@@ -478,6 +494,7 @@ def add_random_article(word, plural):
         return "our " + word
     else:
         return add_indefinite_article(word, plural)
+
 
 def eventual_postfixed_adverb():
     plural = random.choice((True, False))
@@ -530,6 +547,7 @@ def eventual_postfixed_adverb():
     else:
         return ""
 
+
 def person_verb_having_thing_complement(plural):
     inner = random.choice((
         "manage", "target", "streamline", "improve", "optimize", "achieve",
@@ -553,12 +571,14 @@ def person_verb_having_thing_complement(plural):
     ))
     return build_plural_verb(inner, plural)
 
+
 def person_verb_having_bad_thing_complement(plural):
     inner = random.choice((
         "address", "identify", "avoid", "mitigate", "minimize", "overcome",
         "tackle", "reduce", "alleviate"
     ))
     return build_plural_verb(inner, plural)
+
 
 def thing_verb_having_thing_complement(plural):
     inner = random.choice((
@@ -573,6 +593,7 @@ def thing_verb_having_thing_complement(plural):
     ))
     return build_plural_verb(inner, plural)
 
+
 def thing_verb_having_person_complement(plural):
     inner = random.choice((
         "motivate", "target", "enable", "drive", "synergize", "empower",
@@ -580,6 +601,7 @@ def thing_verb_having_person_complement(plural):
         "influence", "strengthen", "energize", "invigorate", "reenergize"
     ))
     return build_plural_verb(inner, plural)
+
 
 def person_verb_and_definite_ending(plural, infinitive):
     inner = random.choice((
@@ -633,10 +655,12 @@ def person_verb_and_definite_ending(plural, infinitive):
     else:
         return build_plural_verb(inner, plural)
 
+
 def thing_verb_and_definite_ending(plural):
     return build_plural_verb(random.choice((
         "add value", "deliver maximum impact"
     )), plural)
+
 
 def thing_verb_and_ending(plural):
     compl_sp = random.choice((True, False))
@@ -651,6 +675,7 @@ def thing_verb_and_ending(plural):
     else:
         return thing_verb_and_definite_ending(plural)
 
+
 def person_verb_and_ending(plural, infinitive):
     compl_sp = random.choice((True, False))
 
@@ -663,6 +688,7 @@ def person_verb_and_ending(plural, infinitive):
     else:
         return (person_verb_having_thing_complement(plural) + " " +
                 add_random_article(thing(compl_sp), compl_sp))
+
 
 def faukon():
     if random.randint(1, 14) <= 13:
@@ -679,8 +705,10 @@ def faukon():
 
     return "we must activate the " + matrix_or_so() + " to"
 
+
 def person_infinitive_verb_and_ending():
     return person_verb_and_ending(True, True)
+
 
 def proposition():
     plural = random.choice((True, False))
@@ -782,15 +810,17 @@ def articulated_propositions():
     elif r == 403:
         return "in today's fast-changing world, " + proposition()
     elif r == 404:
-        return "internally and externally, " + proposition();
+        return "internally and externally, " + proposition()
     elif r == 405:
-        return "our message is: " + proposition();
+        return "our message is: " + proposition()
     elif r == 406:
         return "in a data-first world, " + proposition()
+
 
 def sentence():
     propositions = articulated_propositions()
     return propositions[0].upper() + propositions[1:] + "."
+
 
 def sentences():
     ret = []
@@ -798,14 +828,18 @@ def sentences():
         ret.append(sentence())
     return " ".join(ret)
 
+
 def sentence_guaranteed_amount(count):
     return " ".join(sentence() for i in xrange(count))
+
 
 def workshop():
     return sentence_guaranteed_amount(500)
 
+
 def short_workshop():
     return sentence_guaranteed_amount(5)
+
 
 def financial_report():
     return sentences()
