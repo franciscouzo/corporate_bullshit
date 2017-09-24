@@ -77,7 +77,7 @@ def boss():
         "Identity", "Branding", "Diversity and Inclusion", "Media Relations",
         "Value Added Services", "Technology", "Campaigning",
         "Digital Marketing", "Digital Transformation Office", "Communications",
-        "Architecture"
+        "Architecture", "Data & Analytics"
     ))
     department_or_top_role = weighted_choice({
         department: 27, "Visionary": 1, "Digital": 1, "Technical": 1,
@@ -97,7 +97,7 @@ def boss():
 
 def person(plural):
     if not plural:
-        if random.randint(1, 37) <= 25:
+        if random.randint(1, 39) <= 25:
             return random.choice((
                 "steering committee", "group", "project manager",
                 thing_atom(random.choice((True, False))) + " champion",
@@ -107,7 +107,8 @@ def person(plural):
                 "account executive", "project leader", "product manager",
                 "naming committee", "executive committee",
                 "white-collar workforce", "innovator", "game changer",
-                "visionary", "market thinker", "market thinker"
+                "visionary", "market thinker", "market thinker", "network",
+                "initiator"
             ))
 
         return boss()
@@ -119,7 +120,7 @@ def person(plural):
         "white-collar workers", "board-level executives",
         "key representatives", "innovators", "policy makers", "pioneers",
         "game changers", "market thinkers", "thought leaders", "mediators",
-        "facilitators", "attackers"
+        "facilitators", "attackers", "initiators", "decision makers"
     ))
 
 def matrix_or_so():
@@ -228,7 +229,9 @@ def thing_adjective():
         "inspired", "high-return", "turn-key", "turnkey", "decision-ready",
         "diversified", "demanding", "ambitious", "domain-relevant", "novel",
         "pre-planned", "well-respected", "market-based", "distributor-based",
-        "area-wide"
+        "area-wide", "movements-based", "ever-changing", "purpose-driven",
+        "resourceful", "real-life", "vibrant", "bright", "pure-play",
+        "bespoke", "pivotal", "efficiency-enhancing"
     ))
 
 def timeless_event():
@@ -325,11 +328,12 @@ def thing_atom(plural):
             "reorganization", "synergization", "socialization",
             "strategic shift", "growth engine", "tailwind", "accelerator",
             "deliverable", "takeaway", "insourcing", "outsourcing",
-            "careful consideration"
+            "careful consideration", "conviction", "initiator",
+            "operating model", "proof-point"
         ))
 
     if not plural:
-        r = random.randint(1, 388)
+        r = random.randint(1, 404)
         if r == 1:
             return timeless_event()
         elif r <= 78:
@@ -385,12 +389,16 @@ def thing_atom(plural):
                 "goal setting", "craftsmanship", "operational excellence",
                 "reengineering", "mindfulness", "quality thinking",
                 "user experience", "speed of execution", "responsive design",
-                'readiness to go "all-in"', "machine intelligence"
+                'readiness to go "all-in"', "machine intelligence",
+                "creativity", "can-do attitude", "relevance", "disruption",
+                "dematerialization", "disintermediation", "disaggregation",
+                "wave of change", "digitalization", "CAPEX",
+                "window of opportunity"
             ))
         else:
             return inner
     else:
-        if random.randint(1, 263) <= 17:
+        if random.randint(1, 270) <= 17:
             return random.choice((
                 "key target markets", "style guidelines",
                 "key performance indicators", "market conditions",
@@ -402,7 +410,8 @@ def thing_atom(plural):
                 "workshops", "dynamics", "options", "aspirations",
                 "swim lanes", "pockets of opportunities",
                 "social implications", "analytics", "advanced analytics",
-                "growth years", "big data", "adjacencies", "core competences"
+                "growth years", "big data", "adjacencies", "core competences",
+                "strengths", "corporate values", "core values"
             ))
 
         return make_eventual_plural(inner, True)
@@ -444,7 +453,7 @@ def bad_things():
         "shortfalls", "limitations", "downtimes", "headwinds",
         "subpar returns", "gaps", "market gaps", "pitfalls", "constraints",
         "problems/difficulties", "bottlenecks", "misunderstandings",
-        "dilemmas", "interdependencies", "discontinuities"
+        "dilemmas", "interdependencies", "discontinuities", "hiccups"
     ))
 
 def eventual_adverb():
@@ -472,8 +481,8 @@ def add_random_article(word, plural):
 
 def eventual_postfixed_adverb():
     plural = random.choice((True, False))
-    r = random.randint(1, 155)
-    if r <= 30:
+    r = random.randint(1, 220)
+    if r <= 32:
         return random.choice((
             " going forward", " within the industry", " across the board",
             " in this space", " from the get-go", " at the end of the day",
@@ -488,34 +497,35 @@ def eventual_postfixed_adverb():
             " over the long term", " across geographies", " in the core",
             " across industry sectors", " across the wider Group",
             " by levelling the playing field", " on a day-to-day basis",
-            " across boundaries"
+            " across boundaries", " within the community",
+            " from within the data"
         ))
-    elif r == 31:
-        return " using " + add_random_article(thing(plural), plural)
-    elif r == 32:
-        return " by leveraging " + add_random_article(thing(plural), plural)
     elif r == 33:
-        return " taking advantage of " + add_random_article(thing(plural), plural)
+        return " using " + add_random_article(thing(plural), plural)
     elif r == 34:
-        return " within the " + matrix_or_so()
+        return " by leveraging " + add_random_article(thing(plural), plural)
     elif r == 35:
-        return " across the " + make_eventual_plural(matrix_or_so(), True)
+        return " taking advantage of " + add_random_article(thing(plural), plural)
     elif r == 36:
-        return " across and beyond the " + make_eventual_plural(matrix_or_so(), True)
+        return " within the " + matrix_or_so()
     elif r == 37:
-        return " resulting in " + add_indefinite_article(growth(), False)
+        return " across the " + make_eventual_plural(matrix_or_so(), True)
     elif r == 38:
-        return " reaped from our " + growth()
+        return " across and beyond the " + make_eventual_plural(matrix_or_so(), True)
     elif r == 39:
-        return " as a consequence of " + add_indefinite_article(growth(), False)
+        return " resulting in " + add_indefinite_article(growth(), False)
     elif r == 40:
+        return " reaped from our " + growth()
+    elif r == 41:
+        return " as a consequence of " + add_indefinite_article(growth(), False)
+    elif r == 42:
         return (" because " + add_random_article(thing(plural), plural) + " " +
                 build_plural_verb("produce", plural) + " " + growth())
-    elif r == 41:
-        return " up, down and across the " + matrix_or_so()
-    elif r == 42:
-        return " ensuring " + add_indefinite_article(thing(plural), plural)
     elif r == 43:
+        return " up, down and across the " + matrix_or_so()
+    elif r == 44:
+        return " ensuring " + add_indefinite_article(thing(plural), plural)
+    elif r == 45:
         return ", paving the way for " + add_indefinite_article(thing(plural), plural)
     else:
         return ""
@@ -539,14 +549,14 @@ def person_verb_having_thing_complement(plural):
         "co-develop", "take control of", "robustify", "harness", "activate",
         "showcase", "cherry-pick", "digitize", "re-invent", "springboard",
         "solutionize", "re-content", "commoditize", "be eager for",
-        "productize", "repurpose", "reenergize"
+        "productize", "repurpose", "reenergize", "co-specify"
     ))
     return build_plural_verb(inner, plural)
 
 def person_verb_having_bad_thing_complement(plural):
     inner = random.choice((
         "address", "identify", "avoid", "mitigate", "minimize", "overcome",
-        "tackle", "reduce"
+        "tackle", "reduce", "alleviate"
     ))
     return build_plural_verb(inner, plural)
 
@@ -559,7 +569,7 @@ def thing_verb_having_thing_complement(plural):
         "engage", "structure", "standardize", "accelerate", "deepen",
         "strengthen", "enforce", "foster", "turbocharge", "granularize",
         "operationalize", "reconceptualize", "iterate", "revolutionise",
-        "digitize", "solutionize", "lead to", "reenergize"
+        "digitize", "solutionize", "lead to", "reenergize", "restructure"
     ))
     return build_plural_verb(inner, plural)
 
@@ -613,7 +623,9 @@ def person_verb_and_definite_ending(plural, infinitive):
         ("create an environment where " + thing_atom(False) + ", " +
          thing_atom(False) + " and " + thing_atom(False) + " can thrive"),
         "seize opportunities", "create momentum", "generate company momentum",
-        "pursue new opportunities",
+        "pursue new opportunities", "increase adherence",
+        "focus on the right things", "open the kimono", "give 110%",
+        "take it to the next level"
     ))
 
     if infinitive:
@@ -713,7 +725,7 @@ def proposition():
 
 
 def articulated_propositions():
-    r = random.randint(1, 402)
+    r = random.randint(1, 406)
     if r <= 270:
         return proposition()
     elif r <= 280:
@@ -755,7 +767,7 @@ def articulated_propositions():
         return "flat out, " + proposition()
     elif r <= 398:
         return "first and foremost, " + proposition()
-    else:
+    elif r <= 402:
         return ("the game is all about " +
                 thing_atom(False) + ", " +
                 thing_atom(False) + ", " +
@@ -767,6 +779,14 @@ def articulated_propositions():
                 thing_atom(False) + ", " +
                 thing_atom(False) + ", and " +
                 thing_atom(False))
+    elif r == 403:
+        return "in today's fast-changing world, " + proposition()
+    elif r == 404:
+        return "internally and externally, " + proposition();
+    elif r == 405:
+        return "our message is: " + proposition();
+    elif r == 406:
+        return "in a data-first world, " + proposition()
 
 def sentence():
     propositions = articulated_propositions()
