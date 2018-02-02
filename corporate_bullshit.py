@@ -125,11 +125,13 @@ def boss():
 
 def person(plural):
     if not plural:
-        if random.randint(1, 45) <= 31:
+        r = random.randint(1, 45)
+        if r == 1:
+            return thing_atom(random.choice((True, False))) + " champion"
+        elif r <= 31:
             return random.choice((
-                "steering committee", "group", "project manager",
-                thing_atom(random.choice((True, False))) + " champion",
-                "community", "sales manager", "enabler", "powerful champion",
+                "steering committee", "group", "project manager", "community",
+                "sales manager", "enabler", "powerful champion",
                 "thought leader", "gatekeeper", "resource",
                 "senior support staff", "brand manager", "category manager",
                 "account executive", "project leader", "product manager",
