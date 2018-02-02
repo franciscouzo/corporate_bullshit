@@ -78,17 +78,6 @@ def weighted_choice(choices):
 
 
 def boss():
-    managing = weighted_choice({
-        "Managing ": 1, "Acting ": 1, "General": 1, "": 5})
-    vice = weighted_choice({"Vice ": 10, "Corporate Vice ": 1, "": 29})
-    co = weighted_choice({"Co-": 1, "": 4})
-    title = random.choice((
-        vice + co + "Director", co + "Chief", co + "Head",
-        vice + co + "President", "Supervisor", co + "Manager"
-    ))
-    age = weighted_choice({"Senior ": 1, "": 3})
-    exec_ = weighted_choice({"Excutive ": 1, "Principal ": 1, "": 10})
-    groupal = weighted_choice({"Group ": 1, "Global ": 1, "": 18})
     department = random.choice((
         "Human Resources", "Controlling", "Internal Audit", "Legal",
         "Operations", "Management Office", "Customer Relations",
@@ -111,16 +100,26 @@ def boss():
         "Holacracy": 1
     })
 
-    officer_or_catalyst = weighted_choice({
-        "Catalyst": 1, "Futurist": 1, "Strategist": 1, "Technologist": 1,
-        "Officer": 16
-    })
-
-    return weighted_choice({
-        managing + age + exec_ + title + " of " + department: 1,
-        groupal + abbreviate("Chief " + department_or_top_role + " " +
-                             officer_or_catalyst, 0.6): 3
-    })
+    if random.randint(1, 4) == 1:
+        managing = weighted_choice({
+            "Managing ": 1, "Acting ": 1, "General": 1, "": 5})
+        vice = weighted_choice({"Vice ": 10, "Corporate Vice ": 1, "": 29})
+        co = weighted_choice({"Co-": 1, "": 4})
+        title = random.choice((
+            vice + co + "Director", co + "Chief", co + "Head",
+            vice + co + "President", "Supervisor", co + "Manager"
+        ))
+        age = weighted_choice({"Senior ": 1, "": 3})
+        exec_ = weighted_choice({"Excutive ": 1, "Principal ": 1, "": 10})
+        return managing + age + exec_ + title + " of " + department
+    else:
+        groupal = weighted_choice({"Group ": 1, "Global ": 1, "": 18})
+        officer_or_catalyst = weighted_choice({
+            "Catalyst": 1, "Futurist": 1, "Strategist": 1, "Technologist": 1,
+            "Officer": 16
+        })
+        return groupal + abbreviate("Chief " + department_or_top_role + " " +
+                                    officer_or_catalyst, 0.6)
 
 
 def person(plural):
