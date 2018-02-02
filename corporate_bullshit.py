@@ -88,7 +88,7 @@ def boss():
     ))
     age = weighted_choice({"Senior ": 1, "": 3})
     exec_ = weighted_choice({"Excutive ": 1, "Principal ": 1, "": 10})
-    groupal = weighted_choice({"Group ": 1, "Global": 1, "": 18})
+    groupal = weighted_choice({"Group ": 1, "Global ": 1, "": 18})
     department = random.choice((
         "Human Resources", "Controlling", "Internal Audit", "Legal",
         "Operations", "Management Office", "Customer Relations",
