@@ -302,16 +302,24 @@ def growth():
 
 
 def thing_atom(plural):
-    if random.randint(1, 194) == 1:
+    r = random.randint(1, 253)
+    if r <= 194:
         inner = matrix_or_so()
+    elif r == 195:
+        inner = abbreviate("Management Information System", 0.5)
+    elif r == 196:
+        inner = abbreviate("Quality Management System", 0.5)
+    elif r == 197:
+        inner = abbreviate("Control Information System", 0.5)
+    elif r == 198:
+        inner = abbreviate("Strategic Management System", 0.5)
+    elif r == 199:
+        inner = abbreviate("leadership development system", 0.5)
     else:
         inner = random.choice((
             "mission", "vision", "guideline", "roadmap", "timeline",
             "win-win solution", "baseline starting point", "sign-off",
-            "escalation", "system",
-            abbreviate("Management Information System", 0.5),
-            abbreviate("Quality Management System", 0.5), "planning", "target",
-            "calibration", abbreviate("Control Information System", 0.5),
+            "escalation", "system", "planning", "target", "calibration",
             "process", "talent", "execution", "leadership", "performance",
             "solution provider", "value", "value creation",
             "value realization", "document", "bottom line", "momentum",
@@ -334,12 +342,11 @@ def thing_atom(plural):
             "cost efficiency", "channel", "convergence", "infrastructure",
             "metric", "technology", "relationship", "partnership",
             "supply-chain", "portal", "solution", "business line",
-            "white paper", "scalability", "innovation",
-            abbreviate("Strategic Management System", 0.5),
-            "Balanced Scorecard", "key differentiator", "case study",
-            "idiosyncrasy", "benefit", "say/do ratio", "segmentation", "image",
-            "realignment", "business model", "business philosophy", "branding",
-            "methodology", "profile", "measure", "measurement", "philosophy",
+            "white paper", "scalability", "innovation", "Balanced Scorecard",
+            "key differentiator", "case study", "idiosyncrasy", "benefit",
+            "say/do ratio", "segmentation", "image", "realignment",
+            "business model", "business philosophy", "branding", "methodology",
+            "profile", "measure", "measurement", "philosophy",
             "branding strategy", "efficiency", "industry", "commitment",
             "perspective", "risk appetite", "best practice", "brand identity",
             "customer centricity", "shareholder value", "attitude", "mindset",
@@ -359,18 +366,16 @@ def thing_atom(plural):
             "brand pyramid", "dashboard", "branding",
             "local-for-local strategy", "cross-sell message",
             "up-sell message", "divisional structure", "value chain",
-            "microsegment", "rollout plan",
-            abbreviate("leadership development system", 0.5),
-            "architectural approach", "brand value", "milestone",
-            "co-innovation", "speedup", "validation", "skill", "skillset",
-            "feedback", "learnability", "visibility", "agility",
-            "simplification", "digitization", "streamlining",
-            "brainstorming space", "crowdsourcing", "big-bang approach",
-            "execution message", "criticality", "opportunity pipeline",
-            "reorganization", "synergization", "socialization",
-            "strategic shift", "growth engine", "tailwind", "accelerator",
-            "deliverable", "takeaway", "insourcing", "outsourcing",
-            "careful consideration", "conviction", "initiator",
+            "microsegment", "rollout plan", "architectural approach",
+            "brand value", "milestone", "co-innovation", "speedup",
+            "validation", "skill", "skillset", "feedback", "learnability",
+            "visibility", "agility", "simplification", "digitization",
+            "streamlining", "brainstorming space", "crowdsourcing",
+            "big-bang approach", "execution message", "criticality",
+            "opportunity pipeline", "reorganization", "synergization",
+            "socialization", "strategic shift", "growth engine", "tailwind",
+            "accelerator", "deliverable", "takeaway", "insourcing",
+            "outsourcing", "careful consideration", "conviction", "initiator",
             "operating model", "proof-point", "bounce rate",
             "marketing funnel", "offshoring", "quick-win", "cross-pollination",
             "hybridation", "positioning", "reinvention", "functionality",
