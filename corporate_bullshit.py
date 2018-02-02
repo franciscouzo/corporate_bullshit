@@ -35,15 +35,15 @@ def build_plural_verb(verb, plural):
     elif verb[last] == "h":
         if verb[last - 1] in "cs":
             return verb[:last + 1] + "es" + verb[last + 1:]
-        else:
-            return verb[:last + 1] + "s" + verb[last + 1:]
+
+        return verb[:last + 1] + "s" + verb[last + 1:]
     elif verb[last] == "y":
         if verb[last - 1].lower() in "aeiou":
             return verb[:last + 1] + "s" + verb[last + 1:]
-        else:
-            return verb[:last] + "ies" + verb[last + 1:]
-    else:
-        return verb[:last + 1] + "s" + verb[last + 1:]
+
+        return verb[:last] + "ies" + verb[last + 1:]
+
+    return verb[:last + 1] + "s" + verb[last + 1:]
 
 
 def add_indefinite_article(word, plural):
@@ -63,8 +63,8 @@ def silly_abbreviation_generator_sas(s):
 def abbreviate(s, probability):
     if random.random() < probability:
         return s + " (" + silly_abbreviation_generator_sas(s) + ")"
-    else:
-        return s
+
+    return s
 
 
 def weighted_choice(choices):
@@ -112,14 +112,14 @@ def boss():
         age = weighted_choice({"Senior ": 1, "": 3})
         exec_ = weighted_choice({"Excutive ": 1, "Principal ": 1, "": 10})
         return managing + age + exec_ + title + " of " + department
-    else:
-        groupal = weighted_choice({"Group ": 1, "Global ": 1, "": 18})
-        officer_or_catalyst = weighted_choice({
-            "Catalyst": 1, "Futurist": 1, "Strategist": 1, "Technologist": 1,
-            "Officer": 16
-        })
-        return groupal + abbreviate("Chief " + department_or_top_role + " " +
-                                    officer_or_catalyst, 0.6)
+
+    groupal = weighted_choice({"Group ": 1, "Global ": 1, "": 18})
+    officer_or_catalyst = weighted_choice({
+        "Catalyst": 1, "Futurist": 1, "Strategist": 1, "Technologist": 1,
+        "Officer": 16
+    })
+    return groupal + abbreviate("Chief " + department_or_top_role + " " +
+                                officer_or_catalyst, 0.6)
 
 
 def person(plural):
@@ -450,8 +450,8 @@ def thing_atom(plural):
                 "wave of change", "digitalization", "CAPEX",
                 "window of opportunity"
             ))
-        else:
-            return inner()
+
+        return inner()
     else:
         if random.randint(1, 287) <= 34:
             return random.choice((
@@ -495,8 +495,8 @@ def thing(plural):
         return (thing_adjective() + ", " + thing_adjective() + ", " +
                 thing_adjective() + " and " + thing_adjective() + " " +
                 thing_atom(plural))
-    else:
-        return thing_atom(plural)
+
+    return thing_atom(plural)
 
 
 def bad_things():
@@ -539,8 +539,8 @@ def add_random_article(word, plural):
         return "the " + word
     elif r <= 6:
         return "our " + word
-    else:
-        return add_indefinite_article(word, plural)
+
+    return add_indefinite_article(word, plural)
 
 
 def eventual_postfixed_adverb():
@@ -595,8 +595,8 @@ def eventual_postfixed_adverb():
     elif r == 46:
         return (", paving the way for " +
                 add_indefinite_article(thing(plural), plural))
-    else:
-        return ""
+
+    return ""
 
 
 def person_verb_having_thing_complement(plural, infinitive):
@@ -624,8 +624,8 @@ def person_verb_having_thing_complement(plural, infinitive):
     ))
     if infinitive:
         return inner
-    else:
-        return build_plural_verb(inner, plural)
+
+    return build_plural_verb(inner, plural)
 
 
 def person_verb_having_bad_thing_complement(plural):
@@ -716,8 +716,8 @@ def person_verb_and_definite_ending(plural, infinitive):
 
     if infinitive:
         return inner
-    else:
-        return build_plural_verb(inner, plural)
+
+    return build_plural_verb(inner, plural)
 
 
 def thing_verb_and_definite_ending(plural):
@@ -736,8 +736,8 @@ def thing_verb_and_ending(plural):
     elif r <= 100:
         return (thing_verb_having_person_complement(plural) + " the " +
                 person(compl_sp))
-    else:
-        return thing_verb_and_definite_ending(plural)
+
+    return thing_verb_and_definite_ending(plural)
 
 
 def person_verb_and_ending(plural, infinitive):
@@ -749,9 +749,9 @@ def person_verb_and_ending(plural, infinitive):
     elif r <= 15:
         return (person_verb_having_bad_thing_complement(plural) + " " +
                 add_random_article(bad_things(), plural))
-    else:
-        return (person_verb_having_thing_complement(plural, infinitive) + " " +
-                add_random_article(thing(compl_sp), compl_sp))
+
+    return (person_verb_having_thing_complement(plural, infinitive) + " " +
+            add_random_article(thing(compl_sp), compl_sp))
 
 
 def faukon():
@@ -812,8 +812,8 @@ def proposition():
     elif r == 108:
         return ("the " + person(plural) + " will be well equipped to " +
                 person_infinitive_verb_and_ending())
-    else:
-        return thing_atom(False) + " is a matter of speed of action"
+
+    return thing_atom(False) + " is a matter of speed of action"
 
 
 def articulated_propositions():
@@ -906,13 +906,13 @@ def sentence():
 
 def sentences():
     ret = []
-    for _ in xrange(max(3, int(random.normalvariate(30, 10)))):
+    for _ in range(max(3, int(random.normalvariate(30, 10)))):
         ret.append(sentence())
     return " ".join(ret)
 
 
 def sentence_guaranteed_amount(count):
-    return " ".join(sentence() for i in xrange(count))
+    return " ".join(sentence() for i in range(count))
 
 
 def workshop():
