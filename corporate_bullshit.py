@@ -757,8 +757,7 @@ def faukon():
     if random.randint(1, 14) <= 13:
         return random.choice((
             "we need to", "we've got to", "the reporting unit should",
-            "controlling should",
-            "pursuing this route will enable us to",
+            "controlling should", "pursuing this route will enable us to",
             "we will go the extra mile to", "we are working hard to",
             "we continue to work tirelessly and diligently to",
             "we will execute to", "we will sharpen our business models to",
