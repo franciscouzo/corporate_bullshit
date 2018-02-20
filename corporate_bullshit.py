@@ -448,7 +448,11 @@ def thing_atom(plural):
                 "creativity", "can-do attitude", "relevance", "disruption",
                 "dematerialization", "disintermediation", "disaggregation",
                 "wave of change", "digitalization", "CAPEX",
-                "window of opportunity"
+                "window of opportunity", "beta", "coopetition",
+                "digital change", "business excellence", "business impact",
+                "business acumen", "leadership culture", "glocalization",
+                "re-equitizing", "cost rationalization",
+                "strategic optionality"
             ))
 
         return inner()
