@@ -94,10 +94,10 @@ def boss():
         "Creativity and Innovation", "Information Security"
     ))
     department_or_top_role = weighted_choice({
-        department: 39, "Visionary": 1, "Digital": 1, "Technical": 1,
+        department: 42, "Visionary": 1, "Digital": 1, "Technical": 1,
         "Manifesto": 1, "Operating": 1, "Product": 1, "Scheme": 1,
         "Growth": 1, "Brand": 1, "Sales": 1, "Networking": 1, "Content": 1,
-        "Holacracy": 1
+        "Holacracy": 1, "Data Protection": 1
     })
 
     if random.randint(1, 4) == 1:
@@ -268,7 +268,8 @@ def thing_adjective():
         "bespoke", "pivotal", "efficiency-enhancing", "multi-level", "rich",
         "frictionless", "up-to-the-minute", "sourced", "outcome-driven",
         "hyperaware", "high-velocity", "lean", "unmatched", "industry-leading",
-        "multi-sided", "tailor-made"
+        "multi-sided", "tailor-made", "contingent", "tangent",
+        "moment-centric", "real-world", "inclusive"
     ))
 
 
@@ -382,7 +383,8 @@ def thing_atom(plural):
             "marketing funnel", "offshoring", "quick-win", "cross-pollination",
             "hybridation", "positioning", "reinvention", "functionality",
             "mindshare", "mobility space", "decision-to-execution cycle",
-            "adjustment", "force management program", "launchpad"
+            "adjustment", "force management program", "launchpad",
+            "value-chain"
         ))
 
     if not plural:
@@ -452,12 +454,12 @@ def thing_atom(plural):
                 "digital change", "business excellence", "business impact",
                 "business acumen", "leadership culture", "glocalization",
                 "re-equitizing", "cost rationalization",
-                "strategic optionality"
+                "strategic optionality", "product expertise"
             ))
 
         return inner()
     else:
-        if random.randint(1, 287) <= 34:
+        if random.randint(1, 289) <= 35:
             return random.choice((
                 "key target markets", "style guidelines",
                 "key performance indicators", "market conditions",
@@ -471,7 +473,8 @@ def thing_atom(plural):
                 "social implications", "analytics", "advanced analytics",
                 "growth years", "big data", "adjacencies", "core competences",
                 "strengths", "corporate values", "core values",
-                "competitive dynamics", "workforce adjustments"
+                "competitive dynamics", "workforce adjustments",
+                "lessons learned"
             ))
 
         return make_eventual_plural(inner(), True)
@@ -635,7 +638,7 @@ def person_verb_having_thing_complement(plural, infinitive):
 def person_verb_having_bad_thing_complement(plural):
     inner = random.choice((
         "address", "identify", "avoid", "mitigate", "minimize", "overcome",
-        "tackle", "reduce", "alleviate"
+        "tackle", "reduce", "alleviate", "filter out"
     ))
     return build_plural_verb(inner, plural)
 
