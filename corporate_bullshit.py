@@ -91,13 +91,16 @@ def boss():
         "Research & Development", "Networking Enhancement",
         "Innovative Strategies", "Global Innovation Insight",
         "Transition Transformation", "Change Management", "Global Strategy",
-        "Creativity and Innovation", "Information Security"
+        "Creativity and Innovation", "Information Security",
+        "Corporate Planning", "Enterprise Customer Experience",
+        "Growth Initiatives", "Finance", "AI Strategy"
     ))
     department_or_top_role = weighted_choice({
         department: 42, "Visionary": 1, "Digital": 1, "Technical": 1,
         "Manifesto": 1, "Operating": 1, "Product": 1, "Scheme": 1,
         "Growth": 1, "Brand": 1, "Sales": 1, "Networking": 1, "Content": 1,
-        "Holacracy": 1, "Data Protection": 1
+        "Holacracy": 1, "Data Protection": 1, "Risk Appetite": 1,
+        "Business": 1
     })
 
     if random.randint(1, 4) == 1:
@@ -116,7 +119,7 @@ def boss():
     groupal = weighted_choice({"Group ": 1, "Global ": 1, "": 18})
     officer_or_catalyst = weighted_choice({
         "Catalyst": 1, "Futurist": 1, "Strategist": 1, "Technologist": 1,
-        "Officer": 16
+        "Evangelist": 1, "Officer": 15
     })
     return groupal + abbreviate("Chief " + department_or_top_role + " " +
                                 officer_or_catalyst, 0.6)
@@ -124,10 +127,10 @@ def boss():
 
 def person(plural):
     if not plural:
-        r = random.randint(1, 45)
+        r = random.randint(1, 46)
         if r == 1:
             return thing_atom(random.choice((True, False))) + " champion"
-        elif r <= 31:
+        elif r <= 32:
             return random.choice((
                 "steering committee", "group", "project manager", "community",
                 "sales manager", "enabler", "powerful champion",
@@ -138,7 +141,7 @@ def person(plural):
                 "white-collar workforce", "innovator", "game changer",
                 "visionary", "market thinker", "network", "initiator",
                 "change agent", "rockstar", "facilitator", "disruptor",
-                "challenger"
+                "challenger", "six-sigma black belt"
             ))
 
         return boss()
@@ -158,7 +161,8 @@ def person(plural):
 
 def matrix_or_so():
     return weighted_choice({
-        "organization": 2, "silo": 3, "matrix": 3, "cube": 1, "sphere": 1
+        "organization": 2, "silo": 3, "matrix": 3, "cube": 1, "sphere": 1,
+        "pyramid": 1
     })
 
 
@@ -219,7 +223,7 @@ def thing_adjective():
         "well-positioned", "end-to-end", "high-quality", "siloed", "modular",
         "service-oriented", "competitive", "scale-as-you-grow", "outside-in",
         "hyper-hybrid", "long-running", "large-scale", "wide-ranging",
-        "active", "stellar", "dramatic", "aggressive", "innovative",
+        "wide-range", "stellar", "dramatic", "aggressive", "innovative",
         "high-powered", "above-average", "result-driven", "innovation-driven",
         "customized", "outstanding", "non-mainstream", "customer-facing",
         "consumer-facing", "unified", "cooperative", "laser-focused",
@@ -246,7 +250,7 @@ def thing_adjective():
         "top-down", "hands-on", "one-on-one", "analytic", "top", "elite",
         "dedicated", "curated", "highly-curated", "re-imagined",
         "thought-provoking", "quality-oriented", "task-oriented",
-        "teamwork-oriented", "high-growth", "fast-track", "next-generation",
+        "teamwork-oriented", "high-growth", "next-gen", "next-generation",
         "new-generation", "best-in-class", "best-of-class", "first-class",
         "top-class", "superior-quality", "synergistic", "micro-macro",
         "organization-wide", "clear-cut", "data-driven", "evidence-based",
@@ -269,13 +273,25 @@ def thing_adjective():
         "frictionless", "up-to-the-minute", "sourced", "outcome-driven",
         "hyperaware", "high-velocity", "lean", "unmatched", "industry-leading",
         "multi-sided", "tailor-made", "contingent", "tangent",
-        "moment-centric", "real-world", "inclusive"
+        "moment-centric", "real-world", "inclusive", "efficiency-enabling",
+        "value-creating", "alternative", "fit-for-purpose", "fast-changing",
+        "onboarded", "active", "container packaged", "dynamically managed",
+        "microservices-oriented", "higher-quality", "brute-force",
+        "enterprise-sales-driven", "developer-led", "fast-track",
+        "highly differentiated", "quick-to-deploy", "efficiency-focused",
+        "as-a-service", "cloud-based", "activity-centric", "data-centric",
+        "activity-focused", "data-focused", "workforce-focused",
+        "organization-focused", "spot-on", "distributed", "deterministic",
+        "converged", "on-premise", "company-first", "multi-vendor",
+        "contextual", "hybrid", "higher-level", "user-driven", "full-stack",
+        "build-as-you-go", "fully-digital", "agent-based", "AI-ready",
+        "managerial", "industry-recognized", "top-ranking"
     ))
 
 
 def timeless_event():
     return random.choice((
-        "kick-off", "roll-out", "client event", "quarter results"
+        "kick-off", "roll-out", "client event", "quarterly results"
     ))
 
 
@@ -286,7 +302,7 @@ def growth_atom():
         "gain in task efficiency", "shift in value", "increase in margins",
         "cost reduction", "cost effectiveness", "level of change",
         "revenue growth", "profits growth", "growth momentum",
-        "increase in sales"
+        "increase in sales", "run-rate efficiency"
     ))
 
 
@@ -298,14 +314,14 @@ def growth():
         "incremental", "significant", "recurring", "sizeable", "rapid",
         "breakneck", "profitable", "disciplined", "accelerated", "impressive",
         "superior", "attractive-enough", "continual", "above-potential",
-        "better-than-average"
+        "better-than-average", "exponential", "long-term", "future"
     ))
     return superlative + " " + growth_atom()
 
 
 def thing_atom(plural):
     def inner():
-        r = random.randint(1, 253)
+        r = random.randint(1, 270)
         if r <= 194:
             return matrix_or_so()
         elif r == 195:
@@ -317,6 +333,8 @@ def thing_atom(plural):
         elif r == 198:
             return abbreviate("Strategic Management System", 0.5)
         elif r == 199:
+            return abbreviate("Business Model Innovation", 1.0)
+        elif r == 200:
             return abbreviate("leadership development system", 0.5)
 
         return random.choice((
@@ -346,22 +364,23 @@ def thing_atom(plural):
             "metric", "technology", "relationship", "partnership",
             "supply-chain", "portal", "solution", "business line",
             "white paper", "scalability", "innovation", "Balanced Scorecard",
-            "key differentiator", "case study", "idiosyncrasy", "benefit",
-            "say/do ratio", "segmentation", "image", "realignment",
-            "business model", "business philosophy", "branding", "methodology",
-            "profile", "measure", "measurement", "philosophy",
+            "key differentiator", "competitive differentiator",
+            "idiosyncrasy", "benefit", "say/do ratio", "segmentation",
+            "image", "business model", "business philosophy", "branding",
+            "methodology", "profile", "measure", "measurement", "philosophy",
             "branding strategy", "efficiency", "industry", "commitment",
-            "perspective", "risk appetite", "best practice", "brand identity",
-            "customer centricity", "shareholder value", "attitude", "mindset",
-            "flexibility", "granularity", "engagement", "pyramid", "market",
-            "diversity", "interdependency", "scaling", "asset",
-            "flow charting", "value proposition", "performance culture",
-            "change", "reward", "learning", "next step", "delivery framework",
-            "structure", "support structure", "standardization", "objective",
-            "footprint", "transformation process", "policy", "sales target",
-            "ecosystem", "market practice", "atmosphere", "operating strategy",
+            "perspective", "risk appetite", "best practice",
+            "brand identity", "customer centricity", "shareholder value",
+            "attitude", "mindset", "flexibility", "granularity", "engagement",
+            "pyramid", "market", "diversity", "interdependency", "scaling",
+            "asset", "flow charting", "value proposition",
+            "performance culture", "change", "reward", "learning",
+            "next step", "delivery framework", "structure",
+            "support structure", "standardization", "objective", "footprint",
+            "transformation process", "policy", "sales target", "ecosystem",
+            "market practice", "atmosphere", "operating strategy",
             "core competency", "market practice", "operating strategy",
-            "insight", "accomplishment", "correlation", "touchpoint",
+            "insight", "accomplishment", "correlation", "touch point",
             "knowledge transfer", "correlation", "capability", "gamification",
             "smooth transition", "leadership strategy", "collaboration",
             "success factor", "lever", "breakthrough", "open-door policy",
@@ -384,16 +403,24 @@ def thing_atom(plural):
             "hybridation", "positioning", "reinvention", "functionality",
             "mindshare", "mobility space", "decision-to-execution cycle",
             "adjustment", "force management program", "launchpad",
-            "value-chain"
+            "value-chain", "motion", "customer-orientation", "realignment",
+            "governmentalization", "case study", "blockchain",
+            "Innovation Incubator", "input", "scope", "action", "context",
+            "next level", "topology", "data point", "enablement",
+            "test-first design"
         ))
 
     if not plural:
-        r = random.randint(1, 430)
+        r = random.randint(1, 471)
         if r == 1:
             return timeless_event()
         elif r == 2:
             return abbreviate("Quality Research", 0.5)
-        elif r <= 177:
+        elif r == 3:
+            return abbreviate("Customer Experience", 0.5)
+        elif r == 4:
+            return abbreviate("Customer Experience Management", 0.5)
+        elif r <= 201:
             return random.choice((
                 "team building", "focus", "strategy",
                 "planning granularity", "core business", "implementation",
@@ -409,12 +436,11 @@ def thing_atom(plural):
                 "intellect", "emotional impact", "emotional intelligence",
                 "adaptability", "stress management", "self-awareness",
                 "strategic thinking", "cross-fertilization", "effectiveness",
-                "customer experience", "centerpiece", "SWOT analysis",
-                "responsibility", "accountability", "ROI", "line of business",
-                "serviceability", "responsiveness", "simplicity",
-                "portfolio shaping", "knowledge sharing", "continuity",
-                "visual thinking", "interoperability", "compliance",
-                "teamwork", "self-efficacy", "decision-making",
+                "SWOT analysis", "responsibility", "accountability", "ROI",
+                "line of business", "serviceability", "responsiveness",
+                "simplicity", "portfolio shaping", "knowledge sharing",
+                "continuity", "visual thinking", "interoperability",
+                "compliance", "teamwork", "self-efficacy", "decision-maker",
                 "line-of-sight", "scoping", "line-up", "predictability",
                 "recognition", "investor confidence", "competitive advantage",
                 "uniformity", "competitiveness", "big picture",
@@ -454,12 +480,21 @@ def thing_atom(plural):
                 "digital change", "business excellence", "business impact",
                 "business acumen", "leadership culture", "glocalization",
                 "re-equitizing", "cost rationalization",
-                "strategic optionality", "product expertise"
+                "strategic optionality", "product expertise", "velocity",
+                "elasticity", "value stream management",
+                "digital acceleration", "quality control", "decision-making",
+                "digital business", "Organizational Intelligence",
+                "Business Intelligence", "self-actualization",
+                "leadership effectiveness", "customer's journey",
+                "adding services", "centerpiece", "modern simplicity",
+                "cost control", "operations delivery", "guidance",
+                "onboarding", "cost structure", "traction", "ethos",
+                "auditability"
             ))
 
         return inner()
     else:
-        if random.randint(1, 289) <= 35:
+        if random.randint(1, 310) <= 40:
             return random.choice((
                 "key target markets", "style guidelines",
                 "key performance indicators", "market conditions",
@@ -474,7 +509,8 @@ def thing_atom(plural):
                 "growth years", "big data", "adjacencies", "core competences",
                 "strengths", "corporate values", "core values",
                 "competitive dynamics", "workforce adjustments",
-                "lessons learned"
+                "lessons learned", "core verticals", "metrics",
+                "cost-control measures", "expectations", "data practices"
             ))
 
         return make_eventual_plural(inner(), True)
@@ -512,15 +548,17 @@ def bad_things():
         "challenging market conditions", "inefficiencies", "overlaps",
         "known unknowns", "unknown unknowns", "soft cycle issues", "obstacles",
         "surprises", "weaknesses", "threats", "barriers to success",
-        "barriers", "shortcomings", "problems", "uncertainties",
+        "barriers", "barriers to growth", "problems", "uncertainties",
         "unfavorable developments", "consumer/agent disconnects",
         "underperforming areas", "information overloads", "concerns",
         "shortfalls", "limitations", "downtimes", "headwinds",
-        "subpar returns", "gaps", "market gaps", "pitfalls", "constraints",
-        "problems/difficulties", "bottlenecks", "misunderstandings",
-        "dilemmas", "interdependencies", "discontinuities", "hiccups",
-        "vulnerabilities", "negative cash flows",
-        "net profit revenue deficiencies", "negative contributions to profits"
+        "subpar returns", "gaps", "market gaps", "capability gaps",
+        "constraints", "problems/difficulties", "bottlenecks",
+        "misunderstandings", "dilemmas", "interdependencies",
+        "discontinuities", "hiccups", "vulnerabilities",
+        "negative cash flows", "net profit revenue deficiencies",
+        "negative contributions to profits", "shortcomings", "pitfalls",
+        "friction", "red flags", "roadblocks", "decision-making biases"
     ))
 
 
@@ -534,7 +572,7 @@ def eventual_adverb():
             "genuinely", "efficiently", "seamlessly", "consistently",
             "diligently", "dramatically", "straightforwardly",
             "differentially", "gradually", "aggressively", "cost-effectively",
-            "proactively"
+            "proactively", "inherently", "directionally"
         )) + " "
 
     return ""
@@ -550,10 +588,17 @@ def add_random_article(word, plural):
     return add_indefinite_article(word, plural)
 
 
+def thing_with_random_article(plural):
+    if not plural and random.randint(1, 100) == 1:
+        return 'the "why" behind ' + thing_atom(random.choice((True, False)))
+
+    return add_random_article(thing(plural), plural)
+
+
 def eventual_postfixed_adverb():
     plural = random.choice((True, False))
-    r = random.randint(1, 235)
-    if r <= 34:
+    r = random.randint(1, 255)
+    if r <= 38:
         return random.choice((
             " going forward", " within the industry", " across the board",
             " in this space", " from the get-go", " at the end of the day",
@@ -569,37 +614,38 @@ def eventual_postfixed_adverb():
             " across industry sectors", " across the wider Group",
             " by levelling the playing field", " on a day-to-day basis",
             " across boundaries", " within the community",
-            " from within the data", " round-the-clock", " moving forward"
+            " from within the data", " round-the-clock", " moving forward",
+            " downstream", " down the chain", " in the space",
+            " across the entire spectrum"
         ))
-    elif r == 35:
-        return " using " + add_random_article(thing(plural), plural)
-    elif r == 36:
-        return " by leveraging " + add_random_article(thing(plural), plural)
-    elif r == 37:
-        return (" taking advantage of " +
-                add_random_article(thing(plural), plural))
-    elif r == 38:
-        return " within the " + matrix_or_so()
     elif r == 39:
-        return " across the " + make_eventual_plural(matrix_or_so(), True)
+        return " using " + thing_with_random_article(plural)
     elif r == 40:
+        return " by leveraging " + thing_with_random_article(plural)
+    elif r == 41:
+        return " taking advantage of " + thing_with_random_article(plural)
+    elif r == 42:
+        return " within the " + matrix_or_so()
+    elif r == 43:
+        return " across the " + make_eventual_plural(matrix_or_so(), True)
+    elif r == 44:
         return (" across and beyond the " +
                 make_eventual_plural(matrix_or_so(), True))
-    elif r == 41:
+    elif r == 45:
         return " resulting in " + add_indefinite_article(growth(), False)
-    elif r == 42:
+    elif r == 46:
         return " reaped from our " + growth()
-    elif r == 43:
+    elif r == 47:
         return (" as a consequence of " +
                 add_indefinite_article(growth(), False))
-    elif r == 44:
-        return (" because " + add_random_article(thing(plural), plural) + " " +
+    elif r == 48:
+        return (" because " + thing_with_random_article(plural) + " " +
                 build_plural_verb("produce", plural) + " " + growth())
-    elif r == 45:
+    elif r == 49:
         return " up, down and across the " + matrix_or_so()
-    elif r == 45:
+    elif r == 50:
         return " ensuring " + add_indefinite_article(thing(plural), plural)
-    elif r == 46:
+    elif r == 51:
         return (", paving the way for " +
                 add_indefinite_article(thing(plural), plural))
 
@@ -627,7 +673,8 @@ def person_verb_having_thing_complement(plural, infinitive):
         "solutionize", "re-content", "commoditize", "be eager for",
         "productize", "repurpose", "reenergize", "co-specify", "codify",
         "cross-pollinate", "ignite", "transgenerate", "orchestrate",
-        "envisioneer", "reintermediate"
+        "envisioneer", "reintermediate", "reframe", "control", "ideate",
+        "reprioritize", "operate", "cascade"
     ))
     if infinitive:
         return inner
@@ -638,7 +685,7 @@ def person_verb_having_thing_complement(plural, infinitive):
 def person_verb_having_bad_thing_complement(plural):
     inner = random.choice((
         "address", "identify", "avoid", "mitigate", "minimize", "overcome",
-        "tackle", "reduce", "alleviate", "filter out"
+        "tackle", "reduce", "alleviate", "filter out", "remove", "prevent"
     ))
     return build_plural_verb(inner, plural)
 
@@ -668,11 +715,17 @@ def thing_verb_having_person_complement(plural):
 
 
 def person_verb_and_definite_ending(plural, infinitive):
-    if random.randint(1, 106) == 1:
+    r = random.randint(1, 113)
+    if r == 1:
         return ("create an environment where " +
                 thing_atom(False) + ", " +
                 thing_atom(False) + " and " +
                 thing_atom(False) + " can thrive")
+    elif r == 2:
+        return "advance our strategy to " + person_infinitive_verb_and_ending()
+    elif r == 3:
+        return ("focus on our " + thing_atom(plural) + " to " +
+                person_infinitive_verb_and_ending())
     else:
         inner = random.choice((
             "streamline the process", "address the overarching issues",
@@ -718,7 +771,10 @@ def person_verb_and_definite_ending(plural, infinitive):
             "pursue new opportunities", "increase adherence",
             "focus on the right things", "open the kimono", "give 110%",
             "take it to the next level", "boil the ocean", "close the loop",
-            "create value", "disrupt the status quo"
+            "create value", "disrupt the status quo", "be on the same page",
+            "deliver greater value for our customers",
+            "generate new value for shareholders",
+            "strengthen the balance sheet", "operate"
         ))
 
     if infinitive:
@@ -729,17 +785,17 @@ def person_verb_and_definite_ending(plural, infinitive):
 
 def thing_verb_and_definite_ending(plural):
     return build_plural_verb(random.choice((
-        "add value", "deliver maximum impact"
+        "add value", "deliver maximum impact", "be on track"
     )), plural)
 
 
 def thing_verb_and_ending(plural):
     compl_sp = random.choice((True, False))
 
-    r = random.randint(1, 102)
+    r = random.randint(1, 103)
     if r <= 55:
         return (thing_verb_having_thing_complement(plural) + " " +
-                add_random_article(thing(compl_sp), compl_sp))
+                thing_with_random_article(compl_sp))
     elif r <= 100:
         return (thing_verb_having_person_complement(plural) + " the " +
                 person(compl_sp))
@@ -758,11 +814,11 @@ def person_verb_and_ending(plural, infinitive):
                 add_random_article(bad_things(), plural))
 
     return (person_verb_having_thing_complement(plural, infinitive) + " " +
-            add_random_article(thing(compl_sp), compl_sp))
+            thing_with_random_article(compl_sp))
 
 
 def faukon():
-    if random.randint(1, 14) <= 13:
+    if random.randint(1, 16) <= 15:
         return random.choice((
             "we need to", "we've got to", "the reporting unit should",
             "controlling should", "pursuing this route will enable us to",
@@ -770,7 +826,8 @@ def faukon():
             "we continue to work tirelessly and diligently to",
             "we will execute to", "we will sharpen our business models to",
             "to continue our growth, we must", "we are going to",
-            "we look forward to working together to"
+            "we look forward to working together to",
+            "in order to improve, you need to", "trending your numbers should"
         ))
 
     return "we must activate the " + matrix_or_so() + " to"
@@ -782,7 +839,7 @@ def person_infinitive_verb_and_ending():
 
 def proposition():
     plural = random.choice((True, False))
-    r = random.randint(1, 109)
+    r = random.randint(1, 114)
     if r <= 5:
         return (faukon() + " " + person_infinitive_verb_and_ending() +
                 eventual_postfixed_adverb())
@@ -790,16 +847,20 @@ def proposition():
         return ("the " + person(plural) + " " + eventual_adverb() +
                 person_verb_and_ending(plural, False) +
                 eventual_postfixed_adverb())
+    elif r <= 92:
+        return (thing_with_random_article(plural) + " " + eventual_adverb() +
+                thing_verb_and_ending(plural) + eventual_postfixed_adverb())
     elif r <= 97:
-        return (add_random_article(thing(plural), plural) + " " +
-                eventual_adverb() + thing_verb_and_ending(plural) +
+        return (thing_atom(False) + " and " + thing_atom(False) + " " +
+                eventual_adverb() + thing_verb_and_ending(True) +
                 eventual_postfixed_adverb())
     elif r <= 100:
         return (thing_atom(False) + ", " + thing_atom(False) + " and " +
                 thing_atom(False) + " " + eventual_adverb() +
                 thing_verb_and_ending(True) + eventual_postfixed_adverb())
     elif r == 101:
-        return ("there can be no " + growth_atom() + " until we can achieve " +
+        return ("there can be no " + growth_atom() +
+                " until we can achieve " +
                 add_indefinite_article(growth(), False))
     elif r == 102:
         return (thing(True) + " challenge us to " +
@@ -819,12 +880,27 @@ def proposition():
     elif r == 108:
         return ("the " + person(plural) + " will be well equipped to " +
                 person_infinitive_verb_and_ending())
-
-    return thing_atom(False) + " is a matter of speed of action"
+    elif r == 109:
+        return thing_atom(False) + " is a matter of speed of action"
+    elif r == 110:
+        return (thing_atom(False) + " won't happen without " +
+                thing_atom(plural))
+    elif r == 111:
+        return (thing_with_random_article(False) +
+                " will be best positioned to " +
+                person_infinitive_verb_and_ending())
+    elif r == 112:
+        return (thing_atom(False) + " in the digital age calls for " +
+                thing_atom(plural))
+    elif r == 113:
+        return thing_atom(False) + " moves the company up the value chain"
+    elif r == 114:
+        return (thing_atom(False) +
+                " requires that we all pull in the same direction")
 
 
 def articulated_propositions():
-    r = random.randint(1, 411)
+    r = random.randint(1, 416)
     if r <= 270:
         return proposition()
     elif r <= 280:
@@ -848,9 +924,9 @@ def articulated_propositions():
                 person_infinitive_verb_and_ending() +
                 ". The point is to " + person_infinitive_verb_and_ending())
     elif r <= 380:
-        p = random.choice((True, False))
         return ("it's not about " + thing_atom(random.choice((True, False))) +
-                ". It's about " + add_random_article(thing(p), p))
+                ". It's about " +
+                thing_with_random_article(random.choice((True, False))))
     elif r <= 383:
         return ("our challenge is not to " +
                 person_infinitive_verb_and_ending() +
@@ -904,6 +980,21 @@ def articulated_propositions():
                 person(True))
     elif r == 411:
         return "success brings success"
+    elif r == 412:
+        return ("everyone is coming to grips with the fact that " +
+                proposition())
+    elif r == 413:
+        return (thing(True) +
+                " will be a thing of the past over the next decade" +
+                " and be fully replaced with " +
+                thing(random.choice((True, False))))
+    elif r == 414:
+        return ("as the consumer and commerce landscape continues to evolve, " +
+                proposition())
+    elif r == 415:
+        return "in an age of information, " + proposition()
+    elif r == 416:
+        return "in a growing digital environment, " + proposition()
 
 
 def sentence():
