@@ -1,5 +1,6 @@
+#!/usr/bin/env python
 import random
-
+import argparse
 
 def make_eventual_plural(word, plural):
     if len(word) < 3 or not plural:
@@ -1023,3 +1024,24 @@ def short_workshop():
 
 def financial_report():
     return sentences()
+
+
+def main():
+    parser = argparse.ArgumentParser(description='corporate bullshit')
+    meg = parser.add_mutually_exclusive_group()
+    meg.add_argument('-s', '--sentence', action='store_true', help='generate sentence')
+    meg.add_argument('-f', '--financial-report', action='store_true', help='generate financial report')
+    meg.add_argument('-w', '--short-workshop', action='store_true', help='generate short workshop')
+    meg.add_argument('-W', '--workshop', action='store_true', help='generate workshop')
+    args = parser.parse_args()
+    if args.sentence:
+        print(sentence())
+    if args.financial_report:
+        print(financial_report())
+    if args.short_workshop:
+        print(short_workshop())
+    if args.workshop:
+        print(workshop())
+
+if __name__ == '__main__': 
+    main()
